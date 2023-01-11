@@ -1,4 +1,4 @@
-<div ng-controller="homeController">
+<div>
   <!-- navbar -->
   <div class="header-wrapper shadow-sm" ng-include src="'./components/header/header.html'"></div>
   <!-- Banner -->
@@ -191,7 +191,7 @@
 
 <!-- category carousel -->
 <script>
-  const homeCategorySettings = {
+  var homeCategorySettings = {
     arrows: true,
     centerMode: false,
     slidesToShow: 6,
@@ -217,7 +217,7 @@
     ],
   };
   //
-  const homeProductSettings = {
+  var homeProductSettings = {
     arrows: true,
     centerMode: false,
     slidesToShow: 4,
@@ -242,7 +242,6 @@
       },
     ],
   };
-
   $(document).ready(function () {
     $('.category-carousel').slick({
       ...homeCategorySettings,

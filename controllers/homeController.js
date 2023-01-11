@@ -13,7 +13,6 @@ app.controller('homeController', function ($scope) {
     } else {
       $scope.filterProduct = { categoryId: categoryId };
     }
-    console.log($scope.filterProduct);
   };
 
   $scope.guides = guides;

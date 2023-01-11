@@ -4,23 +4,23 @@ const footerList = [
     content: [
       {
         title: 'Về chúng tôi',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Chúng tôi là ai',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Bài viết mới',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Hàng mới về',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Liên hệ với chúng tôi',
-        href: '#!/',
+        href: '#/!',
       },
     ],
   },
@@ -29,23 +29,23 @@ const footerList = [
     content: [
       {
         title: 'Tài khoản của tôi',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Đăng ký / Đăng nhập',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Giỏ hàng',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Danh sách yêu thích',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Cửa hàng',
-        href: '#!/',
+        href: '#/!',
       },
     ],
   },
@@ -54,19 +54,19 @@ const footerList = [
     content: [
       {
         title: 'Chính sách',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Điều khoản sử dụng',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'FAQ',
-        href: '#!/',
+        href: '#/!',
       },
       {
         title: 'Liên hệ',
-        href: '#!/',
+        href: '#/!',
       },
     ],
   },
