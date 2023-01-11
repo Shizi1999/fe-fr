@@ -1,4 +1,5 @@
 import app from '../index.js';
+import guides from '../db/guides.js';
 
 app.controller('homeController', function ($scope) {
   $scope.activeCategory = 0;
@@ -14,4 +15,6 @@ app.controller('homeController', function ($scope) {
     }
     console.log($scope.filterProduct);
   };
+
+  $scope.guides = guides;
 });

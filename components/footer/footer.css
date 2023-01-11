@@ -1,0 +1,28 @@
+#footer {
+  padding: 0 10px;
+  background-color: var(--footer-bg);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.footer-logo {
+  width: 50px;
+  height: 50px;
+  background-image: url('../../assets/images/logo.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer-title {
+  width: 50px;
+  height: 50px;
+}
+
+@media (min-width: 992px) {
+  #footer {
+    padding: var(--padding) !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}

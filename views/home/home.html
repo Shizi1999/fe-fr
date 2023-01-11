@@ -5,7 +5,7 @@
   <div ng-include src="'./components/headerBanner/headerBanner.html'"></div>
   <!-- Category -->
   <div class="home-category-wrapper my-5 py-4">
-    <div class="row d-flex justify-content-between">
+    <div class="row d-flex justify-content-between mb-4">
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="custom-text-primary fw-bold d-flex align-items-center">
           <div class="home-category-icon custom-bg-primary me-2">
@@ -36,7 +36,7 @@
   <div class="home-line"><hr /></div>
   <!-- Bestseller -->
   <div class="best-seller-wrapper my-5 py-4">
-    <div class="row">
+    <div class="row mb-4">
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="custom-text-secondary fw-bold d-flex align-items-center">
           <div class="best-seller-icon custom-bg-secondary me-2">
@@ -69,11 +69,11 @@
     </div>
   </div>
   <!-- Products -->
-  <div class="best-seller-wrapper my-5 py-4">
-    <div class="row justify-content-between">
+  <div class="most-seller-wrapper my-5 py-4">
+    <div class="row justify-content-between mb-4">
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <div class="custom-text-secondary fw-bold d-flex">
-          <div class="best-seller-icon custom-bg-secondary me-2">
+          <div class="most-seller-icon custom-bg-secondary me-2">
             <i class="bi bi-basket"></i>
           </div>
           <span>Sản phẩm của chúng tôi</span>
@@ -97,12 +97,89 @@
         ng-repeat="product in products | filter:filterProduct | limitTo: limit: begin"
         class="col-lg-3 col-md-6 col-sm-12 px-2 py-2"
       >
-        <div class="best-seller-item card">
+        <div class="most-seller-item card">
           <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
           <div class="mx-4 pb-2">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
             <button class="custom-bg-primary text-white custom-btn hover w-100 py-1 mt-2">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-line"><hr /></div>
+  <!-- Most seller -->
+  <div class="most-seller-wrapper my-5 py-4">
+    <div class="d-flex flex-column align-items-center mb-4">
+      <div class="custom-text-secondary fw-bold d-flex">
+        <div class="most-seller-icon custom-bg-secondary me-2">
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <span>Bán chạy nhất</span>
+      </div>
+      <div class="fs-2 fw-bold py-1">Bán chạy nhất trong 7 ngày qua</div>
+    </div>
+    <div class="row">
+      <div
+        ng-repeat="product in products | orderBy: 'selled' | limitTo: 9: 0"
+        class="col-lg-4 col-md-6 col-sm-12 px-2 py-2"
+      >
+        <div class="most-seller-item card">
+          <div class="row px-2 py-2">
+            <div class="col-4">
+              <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+            </div>
+            <div class="col-8 d-flex flex-column justify-content-center">
+              <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+              <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+              <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-line"><hr /></div>
+  <!-- How to buy NFTS -->
+  <div class="most-seller-wrapper my-5 py-4">
+    <div class="d-flex flex-column align-items-center mb-4">
+      <div class="fs-2 fw-bold py-1">Hướng dẫn mua NFTs</div>
+    </div>
+    <div class="row g-2">
+      <div class="col-lg-3 col-md-6 col-sm-12" ng-repeat="guide in guides">
+        <div class="card h-100 px-5 py-5 d-flex align-items-center justify-content-center flex-column">
+          <img src="{{guide.thumbnail}}" alt="" class="img-thumbnail home-guide-img" />
+          <div class="mt-4 mb-2 fw-bold fs-5">{{guide.title}}</div>
+          <div class="text-center">{{guide.description}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-line"><hr /></div>
+  <!-- Blog -->
+  <div class="most-seller-wrapper my-5 py-4">
+    <div class="d-flex flex-column align-items-center mb-4">
+      <div class="custom-text-secondary fw-bold d-flex">
+        <div class="most-seller-icon custom-bg-secondary me-2">
+          <i class="bi bi-newspaper"></i>
+        </div>
+        <span>Bài đăng thường xuyên</span>
+      </div>
+      <div class="fs-2 fw-bold py-1">Bài viết mới nhất</div>
+    </div>
+    <div class="row g-2">
+      <div ng-repeat="blog in blogs" class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card d-flex flex-column h-100">
+          <img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt="" />
+          <div class="d-flex flex-grow-1 px-2 pb-2 flex-column justify-content-between">
+            <p class="home-blog-title fw-semibold">{{blog.title}}</p>
+            <a href="" class="header-banner-btn fw-bold">
+              <span class="me-2">Khám phá</span>
+              <i class="bi bi-arrow-right fw-bolder"></i
+            ></a>
           </div>
         </div>
       </div>
