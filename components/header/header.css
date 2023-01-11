@@ -1,0 +1,30 @@
+.header-wrapper {
+  height: var(--header-height);
+  width: 100%;
+  padding: 0;
+  position: sticky !important;
+  top: 0;
+  background-color: white;
+  z-index: 10000;
+}
+.header-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.header-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.nav-icon {
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+@media (min-width: 992px) {
+  .header-wrapper {
+    padding: var(--padding);
+  }
+}

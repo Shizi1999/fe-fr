@@ -1,0 +1,84 @@
+<div ng-controller="headerSlideController" class="w-100 header-banner">
+  <div class="row h-100 g-2">
+    <div class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 d-flex flex-column justify-content-center">
+      <div class="custom-text-primary fw-bold">
+        <i class="bi bi-fire fs-3"></i>
+        <span class="fs-7">Nơi mua bán NFTs lớn nhất thế giới</span>
+      </div>
+      <div class="fw-bold fs-1">Khám phá, sưu tầm, và trao đổi các NFTs dễ dàng</div>
+      <a href="" class="header-banner-btn fw-bold">
+        <span class="me-2">Khám phá</span>
+        <i class="bi bi-arrow-right fw-bolder"></i
+      ></a>
+    </div>
+    <div class="col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12">
+      <div class="row d-flex flex-column justify-content-center h-100">
+        <div class="header-slide">
+          <div ng-repeat="product in products | limitTo: 4:0" class="col-4 header-slide-item-wrapper">
+            <div class="header-slide-item-img" style="background-image: url({{product.thumbnail}})"></div>
+            <div class="header-slide-item-content d-flex flex-column">
+              <div class="text-center mb-1 my-0 fs-5 fw-bold text-secondary">{{product.name}}</div>
+              <div class="text-center mb-1 my-0 fs-5 fw-bold">{{product.price | currency}}</div>
+              <button class="custom-bg-primary text-white custom-btn hover px-2 py-2">
+                <i class="bi bi-cart-plus-fill"></i>
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const settings = {
+    dots: true,
+    arrows: false,
+    centerMode: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinity: false,
+
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  $(document).ready(function () {
+    function addScaleSlide() {
+      const slides = document.querySelectorAll('.header-slide-item-wrapper');
+      const slideWrapper = document.querySelector('.header-slide');
+      slides.forEach((slide, index) => {
+        if (slide.classList.contains('slick-current')) {
+          slides[index + 1].classList.add('scale');
+        }
+      });
+    }
+
+    $('.header-slide').slick(settings);
+    $('.header-slide').on('beforeChange', () => {
+      const slides = document.querySelectorAll('.header-slide-item-wrapper');
+      const slideWrapper = document.querySelector('.header-slide');
+      const scaleSlides = slideWrapper.querySelectorAll('.scale');
+      scaleSlides.forEach((scaleSlide) => {
+        scaleSlide.classList.remove('scale');
+      });
+    });
+    $('.header-slide').on('afterChange', addScaleSlide);
+    addScaleSlide();
+  });
+</script>
