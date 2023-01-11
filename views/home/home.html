@@ -1,8 +1,8 @@
 <div ng-controller="homeController">
   <!-- navbar -->
-  <div class="header-wrapper shadow-sm" ng-include src="'../../components/header/header.html'"></div>
+  <div class="header-wrapper shadow-sm" ng-include src="'./components/header/header.html'"></div>
   <!-- Banner -->
-  <div ng-include src="'../../components/headerBanner/headerBanner.html'"></div>
+  <div ng-include src="'./components/headerBanner/headerBanner.html'"></div>
   <!-- Category -->
   <div class="home-category-wrapper my-5 py-4">
     <div class="d-flex justify-content-between">
@@ -27,7 +27,7 @@
     <div class="category-carousel">
       <div ng-repeat="category in categories" class="px-2 py-2">
         <div class="home-category-item card">
-          <img src="../{{category.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          <img src="{{category.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
           <div class="py-1 fw-semibold text-center">{{category.name}}</div>
         </div>
       </div>
@@ -58,7 +58,7 @@
     <div class="best-seller-product-carousel">
       <div ng-repeat="product in products | orderBy: 'selled' | limitTo: 6: 0" class="px-2 py-2">
         <div class="best-seller-item card">
-          <img src="../{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
           <div class="mx-4 pb-2">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
@@ -96,7 +96,7 @@
         class="col-lg-3 col-md-6 col-sm-12 px-2 py-2"
       >
         <div class="best-seller-item card">
-          <img src="../{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
           <div class="mx-4 pb-2">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
@@ -107,7 +107,7 @@
     </div>
   </div>
   <!-- Footer -->
-  <div ng-include src="'../../components/footer/footer.html'"></div>
+  <div ng-include src="'./components/footer/footer.html'"></div>
 </div>
 
 <!-- category carousel -->
