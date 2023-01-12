@@ -22,17 +22,17 @@ const categories = [
   {
     id: 4,
     name: 'Sport',
-    thumbnail: './assets/images/category/sport.png',
+    thumbnail: 'assets/images/category/sport.png',
   },
   {
     id: 5,
     name: 'Utility',
-    thumbnail: './assets/images/category/utility.png',
+    thumbnail: 'assets/images/category/utility.png',
   },
   {
     id: 6,
     name: 'Vitural',
-    thumbnail: './assets/images/category/vitural.png',
+    thumbnail: 'assets/images/category/vitural.png',
   },
 ];
 

@@ -1,9 +1,13 @@
-import products from './db/products.js';
-import categories from './db/categories.js';
-import blogs from './db/blogs.js';
-import footerList from './controllers/common/footer.js';
+import db from './db/db.js';
+import controller from './controllers/controller.js';
 
 const app = angular.module('app', ['ngRoute']);
+
+// set up controller
+for (const key in controller) {
+  controller[key](app);
+}
+
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
@@ -24,13 +28,11 @@ app.config(function ($routeProvider) {
 app.run([
   '$rootScope',
   '$location',
-  '$routeParams',
-  '$window',
-  function ($rootScope, $location, $routeParams, $window) {
-    $rootScope.products = products;
-    $rootScope.categories = categories;
-    $rootScope.blogs = blogs;
-    $rootScope.footerList = footerList;
+  function ($rootScope, $location) {
+    $rootScope.products = db.products;
+    $rootScope.categories = db.categories;
+    $rootScope.blogs = db.blogs;
+    $rootScope.footerLink = db.footerLink;
     $rootScope.activeRoute = '';
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
       $rootScope.activeRoute = $location.path();

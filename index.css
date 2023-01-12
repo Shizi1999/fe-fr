@@ -1,0 +1,6 @@
+@import url('assets/css/base.css');
+@import url('components/footer/footer.css');
+@import url('components/header/header.css');
+@import url('components/headerBanner/headerBanner.css');
+@import url('views/home/home.css');
+@import url('views/product/product.css');

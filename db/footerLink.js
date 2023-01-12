@@ -1,4 +1,4 @@
-const footerList = [
+const footerLink = [
   {
     title: 'ABOUT',
     content: [
@@ -72,4 +72,4 @@ const footerList = [
   },
 ];
 
-export default footerList;
+export default footerLink;
