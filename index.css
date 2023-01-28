@@ -1,6 +1,7 @@
 @import url('assets/css/base.css');
-@import url('components/footer/footer.css');
-@import url('components/header/header.css');
-@import url('components/headerBanner/headerBanner.css');
-@import url('views/home/home.css');
-@import url('views/product/product.css');
+@import url('assets/css/footer.css');
+@import url('assets/css/header.css');
+@import url('assets/css/headerBanner.css');
+@import url('assets/css/home.css');
+@import url('assets/css/form.css');
+@import url('assets/css/cart.css');

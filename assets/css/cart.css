@@ -1,0 +1,23 @@
+.cart-wrapper {
+  min-height: calc(100vh - var(--header-height));
+  padding: 0 4px;
+  max-width: 100%;
+}
+.card-img {
+  max-width: 80px;
+  max-height: 80px;
+}
+.cart-group-input {
+  max-width: 120px;
+}
+
+@media (max-width: 991px) {
+  .cart-form {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .cart-wrapper {
+    padding: var(--padding);
+  }
+}

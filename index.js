@@ -11,17 +11,24 @@ for (const key in controller) {
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: './views/home/home.html',
+      templateUrl: 'views/home.html',
       controller: 'homeController',
     })
     .when('/product', {
-      templateUrl: './views/product/product.html',
+      templateUrl: 'views/product.html',
     })
     .when('/me', {
-      templateUrl: './views/me/me.html',
+      templateUrl: 'views/me.html',
     })
     .when('/cart', {
-      templateUrl: './views/cart/cart.html',
+      templateUrl: 'views/cart.html',
+      controller: 'cartController',
+    })
+    .when('/signin', {
+      templateUrl: 'views/signin.html',
+    })
+    .when('/signup', {
+      templateUrl: 'views/signup.html',
     });
 });
 
@@ -35,7 +42,11 @@ app.run([
     $rootScope.footerLink = db.footerLink;
     $rootScope.activeRoute = '';
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
-      $rootScope.activeRoute = $location.path();
+      let path = $location.path();
+      $rootScope.activeRoute = path;
+      if (path === '/me') {
+        console.log('Hello world');
+      }
     });
   },
 ]);

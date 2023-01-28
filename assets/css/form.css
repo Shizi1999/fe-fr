@@ -1,0 +1,17 @@
+.form-layout {
+  height: 100vh;
+  background-image: url('assets/images/background-form.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.form-wrapper {
+  padding: 40px 20px;
+  width: 60%;
+  min-width: 300px;
+  min-height: 60%;
+}
+
+.form-logo {
+  max-width: 50%;
+}

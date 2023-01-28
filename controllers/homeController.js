@@ -1,7 +1,8 @@
 import guides from '../db/guides.js';
 
 function homeController(app) {
-  app.controller('homeController', function ($scope) {
+  app.controller('homeController', function ($scope, $rootScope, $http) {
+    $scope.products = $rootScope.products;
     $scope.activeCategory = 0;
     $scope.filterProduct = {};
     $scope.limit = 8;

@@ -5,6 +5,7 @@ const products = [
     name: 'Anime #001',
     thumbnail: 'assets/images/products/product-1.png',
     selled: 80,
+    number: 0,
     price: 12,
   },
   {
@@ -13,6 +14,7 @@ const products = [
     name: 'Anime #002',
     thumbnail: 'assets/images/products/product-2.png',
     selled: 17,
+    number: 0,
     price: 14,
   },
   {
@@ -21,6 +23,7 @@ const products = [
     name: 'Anime #003',
     thumbnail: 'assets/images/products/product-3.png',
     selled: 38,
+    number: 0,
     price: 5,
   },
   {
@@ -29,6 +32,7 @@ const products = [
     name: 'Anime #004',
     thumbnail: 'assets/images/products/product-4.png',
     selled: 2,
+    number: 0,
     price: 8,
   },
   {
@@ -37,6 +41,7 @@ const products = [
     name: 'Tượng nghệ thuật',
     thumbnail: 'assets/images/products/product-5.png',
     selled: 8,
+    number: 0,
     price: 80,
   },
   {
@@ -45,6 +50,7 @@ const products = [
     name: 'Animate #001',
     thumbnail: 'assets/images/products/product-6.png',
     selled: 9,
+    number: 0,
     price: 18,
   },
   {
@@ -53,6 +59,7 @@ const products = [
     name: 'Animate #002',
     thumbnail: 'assets/images/products/product-7.png',
     selled: 72,
+    number: 0,
     price: 22,
   },
   {
@@ -61,6 +68,7 @@ const products = [
     name: 'Meta vitural',
     thumbnail: 'assets/images/products/product-8.png',
     selled: 29,
+    number: 0,
     price: 80,
   },
   {
@@ -69,6 +77,7 @@ const products = [
     name: 'Head phone',
     thumbnail: 'assets/images/products/product-9.png',
     selled: 46,
+    number: 0,
     price: 75,
   },
   {
@@ -77,6 +86,7 @@ const products = [
     name: 'Anime #005',
     thumbnail: 'assets/images/products/product-10.png',
     selled: 35,
+    number: 0,
     price: 30,
   },
   {
@@ -85,6 +95,7 @@ const products = [
     name: 'Anime #006',
     thumbnail: 'assets/images/products/product-11.png',
     selled: 17,
+    number: 0,
     price: 22,
   },
   {
@@ -93,6 +104,7 @@ const products = [
     name: 'Anime #007',
     thumbnail: 'assets/images/products/product-12.png',
     selled: 80,
+    number: 0,
     price: 24,
   },
   {
@@ -101,6 +113,7 @@ const products = [
     name: 'Anime #008',
     thumbnail: 'assets/images/products/product-13.png',
     selled: 89,
+    number: 0,
     price: 24,
   },
 ];
