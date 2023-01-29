@@ -1,0 +1,24 @@
+.product-page-wrapper {
+  padding: 20px 2px;
+}
+.product-page-header {
+  background-color: #f8f8f8;
+  padding: 20px 2px;
+}
+.product-page-line {
+  height: 20px;
+  width: 2px !important;
+  background-color: gray;
+}
+@media (min-width: 992px) {
+  .product-page-wrapper,
+  .product-page-header {
+    padding: var(--padding);
+  }
+}
+
+@media (max-width: 991px) {
+  .product-page-sort {
+    width: 100% !important;
+  }
+}

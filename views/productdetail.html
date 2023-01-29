@@ -1,0 +1,170 @@
+<div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
+<div class="container mt-2">
+  <div class="d-flex pb-3 align-items-center flex-wrap">
+    <a class="text-decoration-none text-secondary fs-5 fw-semibold" href="#/!">Trang chủ</a>
+    <div class="product-page-line mx-2"></div>
+    <a class="text-decoration-none text-secondary fs-5 fw-semibold" href="#!product">Sản phẩm</a>
+    <div></div>
+    <div class="product-page-line mx-2"></div>
+    <a class="text-decoration-none text-primary fs-5 fw-semibold" href="#!productdetail/{{product.id}}"
+      >{{product.name}}</a
+    >
+  </div>
+</div>
+<div class="container my-2">
+  <div class="row mx-0">
+    <div class="col-sm-12 col-md-6">
+      <img src="{{product.thumbnail}}" alt="" class="w-100 thumbnail detail-img" />
+    </div>
+    <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-between">
+      <di>
+        <h2 class="custom-text-primary">{{product.name}}</h2>
+        <h3 class="custom-text-secondary">{{product.price | currency}}</h3>
+        <div>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-fill text-warning"></i>
+          <i class="bi bi-star-half text-warning"></i>
+          <span class="text-secondary">(2 customer reviews)</span>
+        </div>
+        <hr />
+        <div class="text-primary fw-semibold d-flex align-items-center">
+          <i class="bi bi-check-lg fs-3"></i>
+          <span>Còn hàng</span>
+        </div>
+        <div class="text-primary fw-semibold d-flex align-items-center">
+          <i class="bi bi-check-lg fs-3"></i>
+          <span>Miễn phí vận chuyển</span>
+        </div>
+        <div class="text-primary fw-semibold d-flex align-items-center">
+          <i class="bi bi-check-lg fs-3"></i>
+          <span>Giảm 30% cho đơn hàng đầu tiên</span>
+        </div>
+        <div class="d-flex w-50 ms-2">
+          <button class="btn btn-primary">-</button>
+          <input value="1" min="1" type="number" class="form-control w-100 text-center mx-1" />
+          <button class="btn btn-primary">+</button>
+        </div>
+        <button class="custom-bg-primary text-white custom-btn hover px-2 py-2 ms-2 w-50 mt-3 detail-add-btn">
+          Add to cart
+        </button>
+      </di>
+      <p class="text-secondary ms-2 fst-italic">
+        **Luôn tự tin với chất lượng tốt nhất. Chúng tôi hi vọng sẽ mang đến những trải nghiệm tuyệt vời nhất**
+      </p>
+    </div>
+  </div>
+</div>
+<!-- description -->
+<div class="container mt-2">
+  <ul class="nav nav-tabs" id="productDetailTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="product-detail-description-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#product-detail-description-tab-pane"
+        type="button"
+        role="tab"
+        aria-controls="product-detail-description-tab-pane"
+        aria-selected="true"
+      >
+        Mô tả sản phẩm
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="product-detail-policy"
+        data-bs-toggle="tab"
+        data-bs-target="#product-detail-policy-pane"
+        type="button"
+        role="tab"
+        aria-controls="product-detail-policy-pane"
+        aria-selected="false"
+      >
+        Chính sách bán hàng
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="productDetailTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="product-detail-description-tab-pane"
+      role="tabpanel"
+      aria-labelledby="product-detail-description-tab"
+      tabindex="0"
+    >
+      <div class="w-100 d-flex justify-content-center px-2">
+        <img src="/assets/images/logo-2.png" alt="" />
+      </div>
+      <p class="mt-2">Sản phẩm mới, cam kết chất lượng nổi bật.</p>
+      <p>Tự do trao đổi.</p>
+      <ul>
+        <li>An toàn</li>
+        <li>Nhanh chóng</li>
+        <li>Tiện lợi</li>
+        <li>Dễ dàng</li>
+      </ul>
+      <div class="w-100 d-flex justify-content-center px-2">
+        <img src="assets/images/blogs/blog-1.png" class="w-100" alt="" />
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="product-detail-policy-pane"
+      role="tabpanel"
+      aria-labelledby="product-detail-policy"
+      tabindex="0"
+    >
+      <div class="w-100 d-flex justify-content-center px-2">
+        <img src="/assets/images/logo-2.png" alt="" />
+      </div>
+      <ul>
+        <li>Miễn phí đổi trả cho sản phẩm lỗi, scam</li>
+        <li>
+          Chúng tôi chỉ thanh toán cho người bán khi không có phát sinh tranh chấp từ người mua sau 1 tuần thanh toán
+        </li>
+        <li>
+          Với khách hàng mua hàng có thể liên hệ với chúng tôi qua email nfts@dragon.gmail.com hoặc sdt 0123.xxx.xxx
+        </li>
+        <li>Với những đơn hàng đã hoàn tất chúng tôi sẽ không chịu trách nhiệm nếu có vấn đề phát sinh</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="most-seller-wrapper my-5 py-4">
+  <div class="d-flex flex-column align-items-center mb-4">
+    <div class="custom-text-secondary fw-bold d-flex">
+      <div class="most-seller-icon custom-bg-secondary me-2">
+        <i class="bi bi-star-fill"></i>
+      </div>
+      <span>Bán chạy nhất</span>
+    </div>
+    <div class="fs-2 fw-bold py-1">Bán chạy nhất trong 7 ngày qua</div>
+  </div>
+  <div class="row mx-0">
+    <div
+      ng-repeat="product in products | orderBy: 'selled' | limitTo: 9: 0"
+      class="col-lg-4 col-md-6 col-sm-12 px-2 py-2"
+    >
+      <div class="most-seller-item card">
+        <div class="row px-2 py-2">
+          <div class="col-4">
+            <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          </div>
+          <div class="col-8 d-flex flex-column justify-content-center">
+            <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+            <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+            <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include src="'components/footer.html'"></div>

@@ -58,7 +58,9 @@
     <div class="best-seller-product-carousel">
       <div ng-repeat="product in products | orderBy: 'selled' | limitTo: 6: 0" class="px-2 py-2">
         <div class="best-seller-item card">
-          <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          <a href="#!/productdetail/{{product.id}}"
+            ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+          /></a>
           <div class="mx-4 pb-2">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
@@ -98,7 +100,9 @@
         class="col-lg-3 col-md-6 col-sm-12 px-2 py-2"
       >
         <div class="most-seller-item card">
-          <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+          <a href="#!productdetail/{{product.id}}"
+            ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+          /></a>
           <div class="mx-4 pb-2">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
@@ -128,7 +132,9 @@
         <div class="most-seller-item card">
           <div class="row px-2 py-2">
             <div class="col-4">
-              <img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
+              <a href="#!/productdetail/{{product.id}}"
+                ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+              /></a>
             </div>
             <div class="col-8 d-flex flex-column justify-content-center">
               <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>

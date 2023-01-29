@@ -16,6 +16,11 @@ app.config(function ($routeProvider) {
     })
     .when('/product', {
       templateUrl: 'views/product.html',
+      controller: 'productController',
+    })
+    .when('/productdetail/:id', {
+      templateUrl: 'views/productdetail.html',
+      controller: 'productDetailController',
     })
     .when('/me', {
       templateUrl: 'views/me.html',

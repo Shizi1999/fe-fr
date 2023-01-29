@@ -1,5 +1,111 @@
-<div>
-  <div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
-  <div class="">Mua sắm</div>
-  <div ng-include src="'components/footer.html'"></div>
+<div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
+<div class="row align-items-center py-4 product-page-header mx-0">
+  <div class="col-md-6 col-sm-12">
+    <div class="d-flex pb-3">
+      <a class="text-decoration-none text-secondary fs-6 fw-semibold" href="#/!">Trang chủ</a>
+      <div class="product-page-line mx-2"></div>
+      <a class="text-decoration-none fs-6 fw-semibold" href="">Sản phẩm</a>
+    </div>
+    <h2 class="fs-1">Explore All Products</h2>
+  </div>
+  <div class="col-md-6 col-sm-12 d-flex justify-content-md-end justify-content-sm-start">
+    <img src="assets/images/product-logo.png" alt="" />
+  </div>
 </div>
+<div class="product-page-wrapper my-2">
+  <div class="row mx-0">
+    <!-- sidebar -->
+    <div class="col-md-12 col-lg-3">
+      <div class="accordion" id="product-page-category">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Danh mục sản phẩm
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div ng-repeat="category in categories" class="accordion-body">{{category.name}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="py-1"></div>
+      <div class="accordion" id="product-page-category-price">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              Giá tiền
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">{{5 | currency}}</div>
+            <div class="accordion-body">{{10 | currency}}</div>
+            <div class="accordion-body">{{15 | currency}}</div>
+            <div class="accordion-body">{{20 | currency}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-9"></div>
+    </div>
+    <!-- product -->
+    <div class="col-md-12 col-lg-9">
+      <div class="w-100 d-flex justify-content-end mt-2 product-page-sort">
+        <select class="form-select form-select-lg mb-3 w-25 product-page-sort" aria-label=".form-select-lg example">
+          <option selected value="lastest">Short by Lastet</option>
+          <option value="1">Short by Oldest</option>
+          <option value="2">Short by Name</option>
+          <option value="3">Short by Price</option>
+        </select>
+      </div>
+      <div class="row">
+        <div ng-repeat="product in products | limitTo: 9 : 0" class="col-lg-4 col-md-4 col-sm-12 px-2 py-2">
+          <div class="card">
+            <a href="#!productdetail/{{product.id}}"
+              ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+            /></a>
+            <div class="mx-4 pb-2">
+              <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+              <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+              <button class="custom-bg-primary text-white custom-btn hover w-100 py-1 mt-2">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 d-flex justify-content-center mt-2">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include src="'components/footer.html'"></div>

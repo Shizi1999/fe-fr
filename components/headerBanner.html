@@ -6,7 +6,7 @@
         <span class="fs-7">Nơi mua bán NFTs lớn nhất thế giới</span>
       </div>
       <div class="fw-bold fs-1">Khám phá, sưu tầm, và trao đổi các NFTs dễ dàng</div>
-      <a href="" class="header-banner-btn fw-bold">
+      <a href="#!product" class="header-banner-btn fw-bold">
         <span class="me-2">Khám phá</span>
         <i class="bi bi-arrow-right fw-bolder"></i
       ></a>
@@ -15,7 +15,11 @@
       <div class="row d-flex flex-column justify-content-center h-100">
         <div class="header-slide">
           <div ng-repeat="product in products | limitTo: 4:0" class="col-4 header-slide-item-wrapper">
-            <div class="header-slide-item-img" style="background-image: url({{product.thumbnail}})"></div>
+            <a
+              href="#!/productdetail/{{product.id}}"
+              class="header-slide-item-img"
+              style="background-image: url({{product.thumbnail}})"
+            ></a>
             <div class="header-slide-item-content d-flex flex-column">
               <div class="text-center mb-1 my-0 fs-5 fw-bold text-secondary">{{product.name}}</div>
               <div class="text-center mb-1 my-0 fs-5 fw-bold">{{product.price | currency}}</div>
