@@ -17,6 +17,9 @@ function homeController(app) {
     };
 
     $scope.guides = guides;
+    $scope.closeSearchModal = () => {
+      $('#searchModal').modal('hide');
+    };
   });
 }
 

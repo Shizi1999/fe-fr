@@ -1,0 +1,81 @@
+<div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
+<div class="row align-items-center py-4 product-page-header mx-0">
+  <div class="col-md-6 col-sm-12">
+    <div class="d-flex pb-3">
+      <a class="text-decoration-none text-secondary fs-6 fw-semibold" href="#/!">Trang chủ</a>
+      <div class="product-page-line mx-2"></div>
+      <a class="text-decoration-none fs-6 fw-semibold" href="">Bài Viết</a>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12 d-flex justify-content-md-end justify-content-sm-start">
+    <img src="assets/images/product-logo.png" alt="" />
+  </div>
+</div>
+<div class="blog-page-wrapper my-2">
+  <div class="row mx-0">
+    <div class="col-lg-8 col-md-12 col-sm-12 pb-lg-5">
+      <div class="row g-3">
+        <div ng-repeat="blog in blogs" class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card d-flex flex-column h-100">
+            <img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt="" />
+            <div class="d-flex flex-grow-1 px-2 pb-2 flex-column justify-content-between">
+              <p class="home-blog-title fw-semibold">{{blog.title}}</p>
+              <a href="" class="header-banner-btn fw-bold">
+                <span class="me-2">Khám phá</span>
+                <i class="bi bi-arrow-right fw-bolder"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="text-primary fs-4 fw-semibold">Bài viết mới nhất</div>
+      <div class="row">
+        <a href="#/!" class="text-decoration-none text-dark">
+          <div class="col-lg-12 col-md-12 col-sm-12" ng-repeat="blog in blogs | limitTo: 3:0">
+            <div class="row py-2">
+              <div class="col-4">
+                <img src="{{blog.thumbnail}}" alt="" class="img-thumbnail" />
+              </div>
+              <div class="col-8">
+                <div class="fs-6 fw-semibold blog-item-title">{{blog.title}}</div>
+                <div class="d-flex text-secondary align-items-center">
+                  <div class="">{{blog.timeStamp}}</div>
+                  <div class="blog-item-line bg-secondary"></div>
+                  <div class="">{{blog.views}}k</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="text-primary fs-4 fw-semibold mt-2">Sản phẩm gợi ý</div>
+      <div class="row mx-0 g-1">
+        <div ng-repeat="product in products | orderBy: 'selled' | limitTo: 4: 0" class="col-12 mx-0 my-2">
+          <div class="most-seller-item card">
+            <div class="row px-2 py-2">
+              <div class="col-4">
+                <a href="#!/productdetail/{{product.id}}"
+                  ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+                /></a>
+              </div>
+              <div class="col-8 d-flex flex-column justify-content-center">
+                <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+                <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+                <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-primary fs-4 fw-semibold mt-2 pb-2">Tags</div>
+      <div class="d-flex flex-wrap">
+        <button class="btn btn-outline-primary me-2 mb-2" ng-repeat="tag in tags">{{tag}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include src="'components/footer.html'"></div>

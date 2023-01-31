@@ -25,6 +25,10 @@ app.config(function ($routeProvider) {
     .when('/me', {
       templateUrl: 'views/me.html',
     })
+    .when('/blog', {
+      templateUrl: 'views/blog.html',
+      controller: 'blogController',
+    })
     .when('/cart', {
       templateUrl: 'views/cart.html',
       controller: 'cartController',
