@@ -36,7 +36,15 @@
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div ng-repeat="category in categories" class="accordion-body">{{category.name}}</div>
+            <div ng-if="!$first" ng-repeat="category in categories" class="accordion-body product-filter-item">
+              <div
+                ng-click="addFiltersCate(category)"
+                class="text-decoration-none position-relative {{checkActiveCate(category) && 'text-primary'}}"
+              >
+                <i ng-if="checkActiveCate(category)" class="bi bi-check text-primary product-selected-icon"></i>
+                {{category.name}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -61,10 +69,16 @@
             aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample"
           >
-            <div class="accordion-body">{{5 | currency}}</div>
-            <div class="accordion-body">{{10 | currency}}</div>
-            <div class="accordion-body">{{15 | currency}}</div>
-            <div class="accordion-body">{{20 | currency}}</div>
+            <div
+              class="accordion-body product-filter-item"
+              ng-repeat="price in rangePrices"
+              ng-click="addFiltersPrice(price)"
+            >
+              <div class="text-decoration-none position-relative {{checkActivePrice(price) && 'text-primary'}}">
+                <i ng-if="checkActivePrice(price)" class="bi bi-check text-primary product-selected-icon"></i
+                >{{price.min | currency:'$':0}} - {{ price.max | currency:'$':0}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -72,16 +86,40 @@
     </div>
     <!-- product -->
     <div class="col-md-12 col-lg-9">
-      <div class="w-100 d-flex justify-content-end mt-2 product-page-sort">
-        <select class="form-select form-select-lg mb-3 w-25 product-page-sort" aria-label=".form-select-lg example">
-          <option selected value="lastest">Short by Lastet</option>
-          <option value="1">Short by Oldest</option>
-          <option value="2">Short by Name</option>
-          <option value="3">Short by Price</option>
-        </select>
+      <div class="w-100 d-flex mt-2 product-page-sort">
+        <div class="row w-100 g-0">
+          <div class="col-lg-3 col-md-12">
+            <select
+              class="form-select form-select-lg w-100 mt-2"
+              aria-label=".form-select-lg example"
+              ng-options="sort.name for sort in sorts"
+              ng-model="sort"
+              ng-change="handleSortChange()"
+            ></select>
+          </div>
+          <div class="col-lg-9 col-md-12 ps-2 d-flex align-items-center flex-wrap">
+            <div
+              class="border py-2 px-2 me-2 mt-2 rounded-1 border-primary text-primary fw-semibold product-page-filter-item"
+              ng-repeat="cate in filtersCate"
+            >
+              {{cate.name}}
+              <span ng-click="removeFilterCate(cate.id)"><i class="bi bi-x"></i></span>
+            </div>
+            <div
+              class="border py-2 px-2 me-2 mt-2 rounded-1 border-primary text-primary fw-semibold product-page-filter-item"
+              ng-repeat="price in filtersPrice"
+            >
+              {{price.min | currency:'$':0}} - {{price.max | currency:'$':0}}
+              <span ng-click="removeFilterPrice(price)"><i class="bi bi-x"></i></span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
-        <div ng-repeat="product in products | limitTo: 9 : 0" class="col-lg-4 col-md-4 col-sm-12 px-2 py-2">
+        <div
+          ng-repeat="product in products | limitTo: limit : currentPage*limit"
+          class="col-lg-4 col-md-4 col-sm-12 px-2 py-2"
+        >
           <div class="card">
             <a href="#!productdetail/{{product.id}}"
               ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
@@ -93,15 +131,31 @@
             </div>
           </div>
         </div>
+        <div ng-if="products.length === 0" class="d-flex align-items-center justify-content-center flex-column">
+          <img src="assets/images/empty-product.png" class="img-thumbnail border-0" alt="" />
+          <div class="fw-semibold custom-text-primary">Oops! Không có sản phẩm phù hợp!</div>
+        </div>
       </div>
       <div class="w-100 d-flex justify-content-center mt-2">
         <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <ul ng-if="products.length >0" class="pagination">
+            <li class="page-item">
+              <div class="page-link" ng-show="totalPage > 1" ng-click="prevPage()">
+                <i class="bi bi-chevron-double-left"></i>
+              </div>
+            </li>
+            <li
+              class="page-item {{i === currentPage+1 ? 'active' : ''}}"
+              ng-repeat="i in getPage()"
+              ng-click="changePage(i)"
+            >
+              <div class="page-link">{{i}}</div>
+            </li>
+            <li class="page-item">
+              <div class="page-link" ng-show="totalPage > 1" ng-click="nextPage()">
+                <i class="bi bi-chevron-double-right"></i>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>

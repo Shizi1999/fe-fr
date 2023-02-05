@@ -19,7 +19,7 @@ const products = [
   },
   {
     id: 3,
-    categoryId: 3,
+    categoryId: 2,
     name: 'Anime #003',
     thumbnail: 'assets/images/products/product-3.png',
     selled: 38,
@@ -28,7 +28,7 @@ const products = [
   },
   {
     id: 4,
-    categoryId: 3,
+    categoryId: 2,
     name: 'Anime #004',
     thumbnail: 'assets/images/products/product-4.png',
     selled: 2,
@@ -91,7 +91,7 @@ const products = [
   },
   {
     id: 11,
-    categoryId: 3,
+    categoryId: 6,
     name: 'Anime #006',
     thumbnail: 'assets/images/products/product-11.png',
     selled: 17,
@@ -100,7 +100,7 @@ const products = [
   },
   {
     id: 12,
-    categoryId: 3,
+    categoryId: 4,
     name: 'Anime #007',
     thumbnail: 'assets/images/products/product-12.png',
     selled: 80,
@@ -109,7 +109,7 @@ const products = [
   },
   {
     id: 13,
-    categoryId: 3,
+    categoryId: 2,
     name: 'Anime #008',
     thumbnail: 'assets/images/products/product-13.png',
     selled: 89,

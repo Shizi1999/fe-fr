@@ -10,15 +10,29 @@
   width: 2px !important;
   background-color: gray;
 }
+.product-page-filter-item:hover {
+  background-color: #0d6efd;
+  color: rgb(251, 251, 251) !important;
+  cursor: pointer;
+  transition: all ease-in 0.3s;
+}
+
+.product-filter-item:hover {
+  cursor: pointer;
+  background-color: rgb(247, 247, 247);
+  color: #0d6efd;
+}
+.product-selected-icon {
+  position: absolute;
+  font-size: 1.2rem;
+  left: -18px;
+}
+.page-item:hover {
+  cursor: pointer;
+}
 @media (min-width: 992px) {
   .product-page-wrapper,
   .product-page-header {
     padding: var(--padding);
-  }
-}
-
-@media (max-width: 991px) {
-  .product-page-sort {
-    width: 100% !important;
   }
 }

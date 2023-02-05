@@ -5,7 +5,7 @@
   <div ng-include src="'components/headerBanner.html'"></div>
   <!-- Category -->
   <div class="home-category-wrapper my-5 py-4">
-    <div class="row d-flex justify-content-between mb-4">
+    <div class="row d-flex justify-content-between mb-4 mx-0">
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="custom-text-primary fw-bold d-flex align-items-center">
           <div class="home-category-icon custom-bg-primary me-2">
@@ -26,17 +26,17 @@
     </div>
     <div class="category-carousel">
       <div ng-repeat="category in categories" class="px-2 py-2">
-        <div class="home-category-item card">
+        <a href="#!product/{{category.name}}" class="home-category-item card text-decoration-none">
           <img src="{{category.thumbnail}}" alt="" class="img-thumbnail category-item-img" />
-          <div class="py-1 fw-semibold text-center">{{category.name}}</div>
-        </div>
+          <div class="py-1 fw-semibold text-center text-dark">{{category.name}}</div>
+        </a>
       </div>
     </div>
   </div>
   <div class="home-line"><hr /></div>
   <!-- Bestseller -->
   <div class="best-seller-wrapper my-5 py-4">
-    <div class="row mb-4">
+    <div class="row mb-4 mx-0">
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="custom-text-secondary fw-bold d-flex align-items-center">
           <div class="best-seller-icon custom-bg-secondary me-2">
@@ -72,7 +72,7 @@
   </div>
   <!-- Products -->
   <div class="most-seller-wrapper my-5 py-4">
-    <div class="row justify-content-between mb-4">
+    <div class="row justify-content-between mb-4 mx-0">
       <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <div class="custom-text-secondary fw-bold d-flex">
           <div class="most-seller-icon custom-bg-secondary me-2">
@@ -94,7 +94,7 @@
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row mx-0">
       <div
         ng-repeat="product in products | filter:filterProduct | limitTo: limit: begin"
         class="col-lg-3 col-md-6 col-sm-12 px-2 py-2"
@@ -124,7 +124,7 @@
       </div>
       <div class="fs-2 fw-bold py-1">Bán chạy nhất trong 7 ngày qua</div>
     </div>
-    <div class="row">
+    <div class="row mx-0">
       <div
         ng-repeat="product in products | orderBy: 'selled' | limitTo: 9: 0"
         class="col-lg-4 col-md-6 col-sm-12 px-2 py-2"
@@ -154,7 +154,7 @@
     <div class="d-flex flex-column align-items-center mb-4">
       <div class="fs-2 fw-bold py-1">Hướng dẫn mua NFTs</div>
     </div>
-    <div class="row g-2">
+    <div class="row g-2 mx-0">
       <div class="col-lg-3 col-md-6 col-sm-12" ng-repeat="guide in guides">
         <div class="card h-100 px-5 py-5 d-flex align-items-center justify-content-center flex-column">
           <img src="{{guide.thumbnail}}" alt="" class="img-thumbnail home-guide-img" />

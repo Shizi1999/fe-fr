@@ -10,27 +10,27 @@
           <a class="nav-link active header-title" aria-current="page" href="#/!">Trang chủ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active header-title" href="#!product">Sản phẩm</a>
+          <a class="nav-link active header-title" href="#!product/All">Sản phẩm</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active header-title" href="#!blog">Bài viết</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link active header-title" href="#/!">Liên hệ</a>
-        </li> -->
+        <li class="nav-item">
+          <a class="nav-link active header-title" href="#!news">Liên hệ</a>
+        </li>
       </ul>
 
       <div class="d-sm-none d-md-block">
-        <a class="text-dark" data-bs-toggle="modal" href="#searchModal" role="button">
+        <a class="text-dark text-decoration-none" data-bs-toggle="modal" href="#searchModal" role="button">
           <i class="bi bi-search fs-7 nav-icon"></i>
         </a>
-        <a href="#!product" class="text-dark"><i class="bi bi-heart fs-6 nav-icon"></i></a>
+        <!-- <a href="#!product/All" class="text-dark"><i class="bi bi-heart fs-6 nav-icon"></i></a> -->
         <a href="#!cart" class="text-dark"><i class="bi bi-cart2 fs-5 nav-icon"></i></a>
         <a href="#!signin" class="text-dark"><i class="bi bi-person fs-5 nav-icon"></i></a>
       </div>
     </div>
-    <div class="d-md-block d-md-none d-lg-none d-xl-none d-xxl-none">
-      <a class="text-dark" data-bs-toggle="modal" href="#searchModal" role="button">
+    <div class="d-md-block d-lg-none d-xl-none d-xxl-none">
+      <a class="text-dark text-decoration-none" data-bs-toggle="modal" href="#searchModal" role="button">
         <i class="bi bi-search fs-7 nav-icon"></i>
       </a>
     </div>
@@ -43,7 +43,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Tìm kiếm sản phẩm</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          ng-click="closeSearchModal()"
+          aria-label="Close"
+        ></button>
       </div>
       <form action="" class="px-4 pt-2">
         <div class="input-group mb-3">

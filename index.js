@@ -14,7 +14,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/home.html',
       controller: 'homeController',
     })
-    .when('/product', {
+    .when('/product/:categoryName', {
       templateUrl: 'views/product.html',
       controller: 'productController',
     })
@@ -35,9 +35,11 @@ app.config(function ($routeProvider) {
     })
     .when('/signin', {
       templateUrl: 'views/signin.html',
+      controller: 'signinController',
     })
     .when('/signup', {
       templateUrl: 'views/signup.html',
+      controller: 'signupController',
     });
 });
 
@@ -50,7 +52,9 @@ app.run([
     $rootScope.blogs = db.blogs;
     $rootScope.footerLink = db.footerLink;
     $rootScope.activeRoute = '';
+    $rootScope.accounts = db.accounts;
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+      window.scrollTo(0, 0);
       let path = $location.path();
       $rootScope.activeRoute = path;
       if (path === '/me') {

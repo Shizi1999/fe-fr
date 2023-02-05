@@ -1,29 +1,66 @@
-<div class="w-100 form-layout">
+<div class="w-100 form-layout position-relative">
   <div class="row w-100 h-100 g-0">
     <div class="col-sm-12 col-md-6 d-none d-md-block"></div>
     <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-center">
-      <form class="bg-white rounded-2 form-wrapper">
+      <form name="signupForm" ng-submit="signup(signupForm)" class="bg-white rounded-2 form-wrapper">
         <a href="#/!" class="px-5 d-flex align-items-center justify-content-center">
           <img src="assets/images/logo-2.png" class="form-logo" alt="" />
         </a>
         <div class="mb-3">
-          <label for="signInEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="signInEmail" aria-describedby="emailHelp" />
-          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+          <label for="email" class="form-label">Email</label>
+          <input
+            ng-change="handleChange()"
+            ng-model="email"
+            name="email"
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            required
+          />
+        </div>
+        <div id="emailHelp" ng-show="errorMessage.email" class="form-text text-danger">{{errorMessage.email}}</div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            ng-change="handleChange()"
+            ng-model="password"
+            type="password"
+            class="form-control"
+            id="password"
+            required
+          />
         </div>
         <div class="mb-3">
-          <label for="signInPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="signInPassword" />
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input
+            ng-change="handleChange()"
+            ng-model="confirmPassword"
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            required
+          />
         </div>
-        <div class="mb-3">
-          <label for="signInPassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" id="signInPassword" />
+        <div id="emailHelp" ng-show="errorMessage.confirmPassword" class="form-text text-danger">
+          {{errorMessage.confirmPassword}}
         </div>
         <button type="submit" class="btn btn-primary">Sign Up</button>
         <div class="d-flex align-items-center justify-content-center">
           <a class="text-decoration-none" href="#!signin">Log In!</a>
         </div>
       </form>
+    </div>
+  </div>
+  <!-- sccess toast message -->
+  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 11">
+    <div id="signupToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-check-circle me-2 text-success fs-4"></i>
+        <strong class="me-auto text-success">Signup Successfull!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body"><a href="#!signin" class="text-decoration-none">Login to continue!</a></div>
     </div>
   </div>
 </div>
