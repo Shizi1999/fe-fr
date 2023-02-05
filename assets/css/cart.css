@@ -10,7 +10,10 @@
 .cart-group-input {
   max-width: 120px;
 }
-
+.cart-pro-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 @media (max-width: 991px) {
   .cart-form {
     width: 100%;

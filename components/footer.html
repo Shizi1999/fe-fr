@@ -21,7 +21,14 @@
       <i class="bi bi-bag"></i>
       <span>Mua sắm</span>
     </a>
-    <a href="#!cart" class="footer-mobile-item" ng-class="activeRoute === '/cart'? 'active':''">
+    <a
+      href="#!cart"
+      class="footer-mobile-item text-decoration-none position-relative"
+      ng-class="activeRoute === '/cart'? 'active':''"
+    >
+      <span class="position-absolute custom-bg-primary text-white footer-cart-total badge"
+        >{{totalProduct > 0 ? totalProduct : ''}}</span
+      >
       <i class="bi bi-cart2 fs-5"></i>
       <span>Giỏ hàng</span>
     </a>

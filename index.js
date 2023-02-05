@@ -53,6 +53,7 @@ app.run([
     $rootScope.footerLink = db.footerLink;
     $rootScope.activeRoute = '';
     $rootScope.accounts = db.accounts;
+    $rootScope.totalProduct = 0;
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
       window.scrollTo(0, 0);
       let path = $location.path();
@@ -63,5 +64,49 @@ app.run([
     });
   },
 ]);
+app.factory('productService', function () {
+  let productList = [];
 
+  const addProduct = function (product) {
+    const pro = productList.find((item) => item.id === product.id);
+    if (pro) {
+      pro.number++;
+    } else {
+      product.number = 1;
+      productList.push(product);
+    }
+  };
+
+  const setProducts = (products) => {
+    productList = products;
+  };
+
+  const getProducts = function () {
+    return productList;
+  };
+
+  const addToCartWithQuantity = (product, quantity) => {
+    const pro = productList.find((item) => item.id === product.id);
+    if (pro) {
+      pro.number += quantity;
+    } else {
+      product.number = quantity;
+      productList.push(product);
+    }
+  };
+
+  const getTotalProduct = () => {
+    return productList.reduce((prev, curr) => {
+      return prev + curr.number;
+    }, 0);
+  };
+
+  return {
+    addProduct,
+    addToCartWithQuantity,
+    getProducts,
+    getTotalProduct,
+    setProducts,
+  };
+});
 export default app;

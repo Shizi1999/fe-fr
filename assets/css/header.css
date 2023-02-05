@@ -22,7 +22,10 @@
   cursor: pointer;
   padding: 0 8px;
 }
-
+.header-cart-total {
+  transform: translate(-110%, -30%);
+  padding: 4px 4px;
+}
 @media (min-width: 992px) {
   .header-wrapper {
     padding: var(--padding);

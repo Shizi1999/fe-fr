@@ -15,9 +15,9 @@
         <li class="nav-item">
           <a class="nav-link active header-title" href="#!blog">Bài viết</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active header-title" href="#!news">Liên hệ</a>
-        </li>
+        </li> -->
       </ul>
 
       <div class="d-sm-none d-md-block">
@@ -25,7 +25,13 @@
           <i class="bi bi-search fs-7 nav-icon"></i>
         </a>
         <!-- <a href="#!product/All" class="text-dark"><i class="bi bi-heart fs-6 nav-icon"></i></a> -->
-        <a href="#!cart" class="text-dark"><i class="bi bi-cart2 fs-5 nav-icon"></i></a>
+
+        <a href="#!cart" class="text-dark position-relative text-decoration-none">
+          <i class="bi bi-cart2 fs-5 nav-icon"></i>
+          <span class="position-absolute custom-bg-primary text-white header-cart-total badge"
+            >{{totalProduct > 0 ? totalProduct : ''}}</span
+          >
+        </a>
         <a href="#!signin" class="text-dark"><i class="bi bi-person fs-5 nav-icon"></i></a>
       </div>
     </div>
@@ -51,22 +57,62 @@
           aria-label="Close"
         ></button>
       </div>
-      <form action="" class="px-4 pt-2">
+      <form action="searchForm" class="px-4 pt-2">
         <div class="input-group mb-3">
           <input
             type="text"
             class="form-control"
-            placeholder="Tìm kiếm sản phẩm"
+            placeholder="Tên sản phẩm"
             aria-label="searchValue"
             aria-describedby="basic-addon1"
+            ng-model="searchValue"
+            ng-change="handleSearch()"
+            name="searchInput"
+            id="searchInput"
           />
           <span class="input-group-text" id="basic-addon1">
             <i class="bi bi-search fs-7 nav-icon"></i>
           </span>
         </div>
       </form>
-      <div class="text-secondary fs-5 fw-semibold ps-4 pt-2">Gợi ý sản phẩm</div>
+
       <div class="modal-body">
+        <div ng-if="searchProducts.length > 0 || dirtyInput" class="text-secondary fs-5 fw-semibold">
+          Kết quả tìm kiếm
+        </div>
+
+        <div
+          ng-if="searchProducts.length === 0 && dirtyInput"
+          class="d-flex align-items-center justify-content-center flex-column"
+        >
+          <img src="assets/images/empty-product.png" class="img-thumbnail border-0" alt="" />
+          <div class="fw-semibold custom-text-primary">Oops! Không có sản phẩm phù hợp!</div>
+        </div>
+
+        <div class="row mx-0 g-1">
+          <div ng-repeat="product in searchProducts" class="col-lg-6 col-md-6 sol-sm-12 mx-0 my-2">
+            <div class="most-seller-item card">
+              <div class="row px-2 py-2">
+                <div class="col-4">
+                  <a ng-click="closeSearchModal()" href="#!/productdetail/{{product.id}}"
+                    ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+                  /></a>
+                </div>
+                <div class="col-8 d-flex flex-column justify-content-center">
+                  <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+                  <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+                  <button
+                    ng-click="addProduct(product)"
+                    class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+                  >
+                    Add to cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-secondary fs-5 fw-semibold pt-2">Gợi ý sản phẩm</div>
         <div class="row mx-0 g-1">
           <div
             ng-repeat="product in products | orderBy: 'selled' | limitTo: 2: 0"
@@ -82,7 +128,10 @@
                 <div class="col-8 d-flex flex-column justify-content-center">
                   <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
                   <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
-                  <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+                  <button
+                    ng-click="addProduct(product)"
+                    class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+                  >
                     Add to cart
                   </button>
                 </div>

@@ -38,7 +38,7 @@ const products = [
   {
     id: 5,
     categoryId: 1,
-    name: 'Tượng nghệ thuật',
+    name: 'Statue',
     thumbnail: 'assets/images/products/product-5.png',
     selled: 8,
     number: 0,

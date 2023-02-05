@@ -1,70 +1,148 @@
 <div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
 <div class="cart-wrapper mt-4">
-  <h4>Giỏ hàng</h4>
-  <div class="row custom-shadow py-2 rounded-1 mb-2 d-none d-md-flex mx-0">
-    <div class="col-sm-12 col-md-4">
-      <input type="checkbox" class="form-check-input me-2" />
-      <span>Sản phẩm</span>
+  <div class="w-100" ng-if="products.length > 0">
+    <h4>Giỏ hàng</h4>
+    <div class="row custom-shadow py-2 rounded-1 mb-2 d-none d-md-flex mx-0">
+      <div class="col-sm-12 col-md-4">
+        <input ng-checked="isCheckedAll" ng-click="handleCheckAll()" type="checkbox" class="form-check-input me-2" />
+        <span>Sản phẩm</span>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 col-lg-3">Đơn giá</div>
+          <div class="col-sm-12 col-md-3 col-lg-3">Số Lượng</div>
+          <div class="col-sm-12 col-md-3 col-lg-3">Thành tiền</div>
+          <div class="col-sm-12 col-md-3 col-lg-3">Xoá</div>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-12 col-md-8">
-      <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-3">Đơn giá</div>
-        <div class="col-sm-12 col-md-3 col-lg-3">Số Lượng</div>
-        <div class="col-sm-12 col-md-3 col-lg-3">Thành tiền</div>
-        <div class="col-sm-12 col-md-3 col-lg-3">Xoá</div>
+
+    <!-- products -->
+    <div class="row custom-shadow py-2 rounded-1 mb-2 mx-0" ng-repeat="product in products">
+      <div class="col-sm-12 col-md-4 d-flex align-items-center">
+        <input
+          type="checkbox"
+          ng-click="handleCheckProduct(product)"
+          class="form-check-input me-2"
+          ng-checked="product.checked"
+        />
+        <img src="{{product.thumbnail}}" class="img-thumbnail card-img mx-2" alt="" />
+        <span class="fs-4 fw-semibold custom-text-primary">{{product.name}}</span>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <div class="row h-100 align-items-center">
+          <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+            <span class="d-sm-inline-block d-md-none">Đơn giá:</span>
+            {{product.price | currency}}
+          </div>
+          <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+            <span class="d-sm-inline-block d-md-none">Số lượng:</span>
+            <div class="input-group cart-group-input">
+              <span ng-click="handleDecrease(product)" class="input-group-text">-</span>
+              <input
+                min="1"
+                type="number"
+                class="form-control text-center cart-pro-quantity"
+                ng-model="product.number"
+              />
+              <span ng-click="handleIncrease(product)" class="input-group-text">+</span>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
+            <span class="d-sm-inline-block d-md-none">Thành tiền</span>
+            {{product.price * product.number | currency}}
+          </div>
+          <div class="col-sm-12 col-md-3 col-lg-3">
+            <button ng-click="handleBtnDelete(product)" class="btn btn-danger px-4 py-1">Xoá</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- payment -->
+    <div class="fs-4 fw-semibold custom-text-secondary">Tổng tiền: {{totalPayment() | currency}}</div>
+    <form
+      ng-submit="order(formOrder)"
+      name="formOrder"
+      class="bg-white rounded-2 form-wrapper px-0 py-0 pb-5 cart-form"
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Họ & Tên</label>
+        <input
+          type="text"
+          ng-model="formState.name"
+          class="form-control"
+          id="name"
+          aria-describedby="emailHelp"
+          required
+        />
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Địa chỉ</label>
+        <input ng-model="formState.address" type="text" class="form-control" id="address" required />
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">SDT:</label>
+        <input
+          ng-keyup="handlePhoneKeyUp(formOrder)"
+          ng-model="formState.phone"
+          type="tel"
+          name="phone"
+          class="form-control"
+          id="phone"
+          required
+          ng-pattern="/(84|0[3|5|7|8|9])+([0-9]{8})\b/"
+        />
+        <div>{{phoneError}}</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Thanh toán</button>
+      <div class="d-flex align-items-center justify-content-center"></div>
+    </form>
+  </div>
+  <div ng-if="products.length === 0" class="d-flex align-items-center justify-content-center flex-column">
+    <img src="assets/images/empty-product.png" class="img-thumbnail border-0" alt="" />
+    <div class="fw-semibold custom-text-primary">Oops! Giỏ hàng trống!</div>
+    <a href="#!product/All" class="text-decoration-none fw-semibold">Tiếp tục mua sắm</a>
+  </div>
+  <div
+    class="modal fade"
+    style="z-index: 99999"
+    id="deleteProductModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Xác nhận xoá sản phẩm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Bạn có muốn xoá sản phẩm này không?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
+          <button type="button" ng-click="handleRemoveProduct()" class="btn btn-primary">Xác Nhận</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- products -->
-  <div class="row custom-shadow py-2 rounded-1 mb-2 mx-0" ng-repeat="product in products">
-    <div class="col-sm-12 col-md-4 d-flex align-items-center">
-      <input type="checkbox" class="form-check-input me-2" />
-      <img src="{{product.thumbnail}}" class="img-thumbnail card-img mx-2" alt="" />
-      <span class="fs-4 fw-semibold custom-text-primary">{{product.name}}</span>
-    </div>
-    <div class="col-sm-12 col-md-8">
-      <div class="row h-100 align-items-center">
-        <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
-          <span class="d-sm-inline-block d-md-none">Đơn giá:</span>
-          {{product.price | currency}}
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
-          <span class="d-sm-inline-block d-md-none">Số lượng:</span>
-          <div class="input-group cart-group-input">
-            <span class="input-group-text">-</span>
-            <input type="text" class="form-control text-center" value="{{product.number}}" />
-            <span class="input-group-text">+</span>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
-          <span class="d-sm-inline-block d-md-none">Thành tiền</span>
-          {{product.price * product.number | currency}}
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3">
-          <button class="btn btn-danger px-4 py-1">Xoá</button>
-        </div>
+  <!-- toast -->
+  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
+    <div id="cartSuccessMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-check-circle me-2 text-success fs-4"></i>
+        <strong class="me-auto text-success">Đặt hàng thành công!</strong>
       </div>
     </div>
   </div>
-  <!-- payment -->
-  <div class="fs-4 fw-semibold custom-text-secondary">Tổng tiền: {{totalPayment() | currency}}</div>
-  <form class="bg-white rounded-2 form-wrapper px-0 py-0 pb-5 cart-form">
-    <div class="mb-3">
-      <label for="name" class="form-label">Họ & Tên</label>
-      <input type="text" class="form-control" id="name" aria-describedby="emailHelp" />
-      <div id="emailHelp" class="form-text"></div>
+  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
+    <div id="cartErrorMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bi bi-x-circle me-2 text-danger fs-4"></i>
+        <strong class="me-auto text-danger">Vui lòng chọn tối thiểu 1 sản phẩm!</strong>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="address" class="form-label">Địa chỉ</label>
-      <input type="text" class="form-control" id="address" />
-    </div>
-    <div class="mb-3">
-      <label for="phone" class="form-label">SDT:</label>
-      <input type="text" class="form-control" id="phone" />
-    </div>
-    <button type="submit" class="btn btn-primary">Thanh toán</button>
-    <div class="d-flex align-items-center justify-content-center"></div>
-  </form>
+  </div>
 </div>
 <div ng-include src="'components/footer.html'"></div>

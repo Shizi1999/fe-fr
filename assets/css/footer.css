@@ -37,10 +37,15 @@
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  padding: 10px 0;
 }
 
 .footer-mobile-item.active {
   color: var(--primary);
+}
+.footer-cart-total {
+  transform: translate(60%, -30%);
+  padding: 4px 4px;
 }
 @media (min-width: 992px) {
   #footer {

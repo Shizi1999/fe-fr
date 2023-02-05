@@ -3,7 +3,8 @@ function productController(app) {
     '$scope',
     '$routeParams',
     '$rootScope',
-    function ($scope, $routeParams, $rootScope) {
+    'productService',
+    function ($scope, $routeParams, $rootScope, productService) {
       $scope.categoryName = $routeParams.categoryName;
       $scope.sorts = [
         { name: 'Order by Name', value: 'name' },
@@ -142,6 +143,14 @@ function productController(app) {
       $scope.checkActivePrice = (priceObj) => {
         let item = $scope.filtersPrice.find((price) => priceObj.min === price.min && priceObj.max === price.max);
         return !!item;
+      };
+      $scope.addProduct = (product) => {
+        productService.addProduct(product);
+        $rootScope.totalProduct = productService.getTotalProduct();
+        $('#addToCart').show();
+        setTimeout(() => {
+          $('#addToCart').hide();
+        }, 1000);
       };
     },
   ]);
