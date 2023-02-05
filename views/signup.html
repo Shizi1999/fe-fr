@@ -51,6 +51,36 @@
         </div>
       </form>
     </div>
+    <div class="footer-mobile">
+      <a href="#/!" class="footer-mobile-item" ng-class="activeRoute === '/'? 'active':''">
+        <i class="bi bi-house"></i>
+        <span>Trang chủ</span>
+      </a>
+      <a href="#!product/All" class="footer-mobile-item" ng-class="activeRoute === '/product'? 'active':''">
+        <i class="bi bi-bag"></i>
+        <span>Mua sắm</span>
+      </a>
+      <a href="#!blog" class="footer-mobile-item" ng-class="activeRoute === '/me'? 'active':''">
+        <i class="bi bi-newspaper fs-5"></i>
+        <span>Blogs</span>
+      </a>
+      <a
+        href="#!cart"
+        class="footer-mobile-item text-decoration-none position-relative"
+        ng-class="activeRoute === '/cart'? 'active':''"
+      >
+        <span class="position-absolute custom-bg-primary text-white footer-cart-total badge"
+          >{{totalProduct > 0 ? totalProduct : ''}}</span
+        >
+        <i class="bi bi-cart2 fs-5"></i>
+        <span>Giỏ hàng</span>
+      </a>
+
+      <a href="#!signin" class="footer-mobile-item" ng-class="activeRoute === '/me'? 'active':''">
+        <i class="bi bi-person fs-5"></i>
+        <span>Tài khoản</span>
+      </a>
+    </div>
   </div>
   <!-- sccess toast message -->
   <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 11">
