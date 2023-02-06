@@ -93,10 +93,9 @@
           required
           ng-pattern="/(84|0[3|5|7|8|9])+([0-9]{8})\b/"
         />
-        <div>{{phoneError}}</div>
+        <div class="form-text text-danger">{{phoneError}}</div>
       </div>
       <button type="submit" class="btn btn-primary">Thanh toán</button>
-      <div class="d-flex align-items-center justify-content-center"></div>
     </form>
   </div>
   <div ng-if="products.length === 0" class="d-flex align-items-center justify-content-center flex-column">

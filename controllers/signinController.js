@@ -24,6 +24,7 @@ function signinController(app) {
             $scope.errorMessage.password = 'Password is invalid!';
           } else {
             $location.path('/');
+            $rootScope.account.email = account.email;
           }
         }
       }

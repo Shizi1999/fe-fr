@@ -1,5 +1,20 @@
 <div>
   <div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
-  <div class="">Tài khoản</div>
+  <div class="product-page-wrapper">
+    <div ng-if="!!account.email" class="py-2 ps-2">
+      <span class="fw-semibold fs-4">Xin chào:</span>
+      <span class="ms-1 fw-semibold fs-4 custom-text-primary">{{account.email}}</span>
+    </div>
+    <div ng-if="!!account.email" class="d-flex justify-content-center pb-2">
+      <div class="me-avatar position-relative">
+        <img src="assets/images/noavatar.jpg" id="previewAvatar" class="w-100 h-100" alt="" />
+        <label for="uploadAvatar" class="position-absolute me-upload-label">
+          <i class="bi bi-card-image fs-3 text-white"></i>
+        </label>
+      </div>
+    </div>
+    <div ng-if="!!account.email" class="my-2"><button ng-click="logout()" class="btn btn-primary">Logout</button></div>
+  </div>
+  <input ng-model="avatarPreview" custom-on-change="handleUploadImage" class="d-none" type="file" id="uploadAvatar" />
   <div ng-include src="'components/footer.html'"></div>
 </div>

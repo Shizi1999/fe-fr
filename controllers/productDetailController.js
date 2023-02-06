@@ -24,6 +24,15 @@ function productDetailController(app) {
           $('#addToCart').hide();
         }, 1000);
       };
+
+      $scope.addProduct = (product) => {
+        productService.addProduct(product);
+        $rootScope.totalProduct = productService.getTotalProduct();
+        $('#addToCart').show();
+        setTimeout(() => {
+          $('#addToCart').hide();
+        }, 1000);
+      };
     },
   ]);
 }

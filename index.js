@@ -24,6 +24,7 @@ app.config(function ($routeProvider) {
     })
     .when('/me', {
       templateUrl: 'views/me.html',
+      controller: 'meController',
     })
     .when('/blog', {
       templateUrl: 'views/blog.html',
@@ -54,16 +55,39 @@ app.run([
     $rootScope.activeRoute = '';
     $rootScope.accounts = db.accounts;
     $rootScope.totalProduct = 0;
+    $rootScope.account = {
+      email: '',
+    };
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
       window.scrollTo(0, 0);
       let path = $location.path();
       $rootScope.activeRoute = path;
       if (path === '/me') {
-        console.log('Hello world');
+        console.log($rootScope.account.email);
+        if (!$rootScope.account.email) {
+          $location.path('/signin');
+        }
+      }
+      if ($('#searchModal')) {
+        $('#searchModal').modal('hide');
       }
     });
   },
 ]);
+
+app.directive('customOnChange', function () {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var onChangeHandler = scope.$eval(attrs.customOnChange);
+      element.on('change', onChangeHandler);
+      element.on('$destroy', function () {
+        element.off();
+      });
+    },
+  };
+});
+
 app.factory('productService', function () {
   let productList = [];
 
@@ -109,4 +133,5 @@ app.factory('productService', function () {
     setProducts,
   };
 });
+
 export default app;

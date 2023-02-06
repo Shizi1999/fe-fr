@@ -169,26 +169,14 @@
           <div class="col-8 d-flex flex-column justify-content-center">
             <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
-            <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+            <button
+              ng-click="addProduct(product)"
+              class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+            >
               Add to cart
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
-    <div id="addToCart" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <i class="bi bi-check-circle me-2 text-success fs-4"></i>
-        <strong class="me-auto text-success">Product added successfull!</strong>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="toast"
-          ng-click="closeToastMessage()"
-          aria-label="Close"
-        ></button>
       </div>
     </div>
   </div>
