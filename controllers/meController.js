@@ -4,6 +4,7 @@ function meController(app) {
       if (e.target.files.length) {
         const src = URL.createObjectURL(e.target.files[0]);
         document.getElementById('previewAvatar').src = src;
+        $rootScope.avatar = src;
       }
     };
 

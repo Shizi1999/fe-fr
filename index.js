@@ -55,6 +55,7 @@ app.run([
     $rootScope.activeRoute = '';
     $rootScope.accounts = db.accounts;
     $rootScope.totalProduct = 0;
+    $rootScope.avatar = 'assets/images/noavatar.jpg';
     $rootScope.account = {
       email: '',
     };
