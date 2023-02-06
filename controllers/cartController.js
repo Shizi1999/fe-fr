@@ -90,6 +90,7 @@ function cartController(app) {
           setTimeout(() => {
             myToast.hide();
           }, 2000);
+          productService.setProducts($scope.products);
           $rootScope.totalProduct = productService.getTotalProduct();
         } else {
           let myToastEl = document.getElementById('cartErrorMessage');
