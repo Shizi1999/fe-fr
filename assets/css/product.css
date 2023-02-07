@@ -20,7 +20,6 @@
 .product-filter-item:hover {
   cursor: pointer;
   background-color: rgb(247, 247, 247);
-  color: #0d6efd;
 }
 .product-selected-icon {
   position: absolute;

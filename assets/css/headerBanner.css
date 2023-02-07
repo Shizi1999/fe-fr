@@ -102,7 +102,7 @@
   width: 14px;
   height: 14px;
   background-color: white;
-  border: 2px solid rgb(37, 0, 249);
+  border: 2px solid var(--primary);
 }
 .header-slide-item-wrapper:not(.scale) {
   padding: 20px 0;

@@ -92,7 +92,7 @@
       >
         <button
           ng-click="changeCategory(category.id)"
-          class="btn {{activeCategory === category.id ? 'btn-primary' : ''}}"
+          class="my-btn mx-1 {{activeCategory === category.id ? 'custom-btn-primary' : ''}}"
           ng-repeat="category in categories"
         >
           {{category.name}}
@@ -151,7 +151,7 @@
               <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
               <button
                 ng-click="addProduct(product)"
-                class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+                class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-75 most-seller-add-btn"
               >
                 Add to cart
               </button>

@@ -6,7 +6,9 @@
     <a class="text-decoration-none text-secondary fs-5 fw-semibold" href="#!product">Sản phẩm</a>
     <div></div>
     <div class="product-page-line mx-2"></div>
-    <a class="text-decoration-none text-primary fs-5 fw-semibold" href="#!productdetail/{{product.id}}"
+    <a
+      class="text-decoration-none text-primary fs-5 fw-semibold custom-text-primary"
+      href="#!productdetail/{{product.id}}"
       >{{product.name}}</a
     >
   </div>
@@ -29,20 +31,20 @@
           <span class="text-secondary">(2 customer reviews)</span>
         </div>
         <hr />
-        <div class="text-primary fw-semibold d-flex align-items-center">
+        <div class="custom-text-primary fw-semibold d-flex align-items-center">
           <i class="bi bi-check-lg fs-3"></i>
           <span>Còn hàng</span>
         </div>
-        <div class="text-primary fw-semibold d-flex align-items-center">
+        <div class="custom-text-primary fw-semibold d-flex align-items-center">
           <i class="bi bi-check-lg fs-3"></i>
           <span>Miễn phí vận chuyển</span>
         </div>
-        <div class="text-primary fw-semibold d-flex align-items-center">
+        <div class="custom-text-primary fw-semibold d-flex align-items-center">
           <i class="bi bi-check-lg fs-3"></i>
           <span>Giảm 30% cho đơn hàng đầu tiên</span>
         </div>
         <div class="d-flex w-50 ms-2">
-          <button ng-click="handleDecreaseQuantity()" class="btn btn-primary">-</button>
+          <button ng-click="handleDecreaseQuantity()" class="custom-btn-primary">-</button>
           <input
             ng-model="quantity"
             readonly="readonly"
@@ -50,7 +52,7 @@
             type="number"
             class="form-control w-100 text-center mx-1"
           />
-          <button ng-click="handleIncreaseQuantity()" class="btn btn-primary">+</button>
+          <button ng-click="handleIncreaseQuantity()" class="custom-btn-primary">+</button>
         </div>
         <button
           ng-click="addToCartWithQuantity(product)"
@@ -171,7 +173,7 @@
             <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
             <button
               ng-click="addProduct(product)"
-              class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+              class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-75 most-seller-add-btn"
             >
               Add to cart
             </button>

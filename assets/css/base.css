@@ -5,23 +5,65 @@
   --secondary: #8c71db;
   --footer-bg: #292930;
 }
-
-.custom-text-primary {
-  color: var(--primary);
+.my-btn {
+  padding: 8px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: white;
 }
-
+.custom-text-primary {
+  color: var(--primary) !important;
+}
+.custom-hover-text-primary:hover {
+  color: var(--primary) !important;
+}
 .custom-bg-primary {
   background-color: var(--primary);
 }
-
+.custom-btn-outline-primary {
+  padding: 8px;
+  border: 1px solid var(--primary);
+  border-radius: 3px;
+  color: var(--primary);
+  background-color: white;
+}
+.custom-btn-outline-primary:hover {
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.custom-btn-primary {
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 3px;
+  color: white;
+  background-color: var(--primary);
+  cursor: pointer;
+}
 .custom-text-secondary {
   color: var(--secondary);
 }
-
+.custom-hover-text-secondary:hover {
+  color: var(--secondary);
+}
 .custom-bg-secondary {
   background-color: var(--secondary);
 }
-
+.custom-btn-outline-secondary {
+  padding: 8px;
+  border: 1px solid var(--secondary);
+  border-radius: 3px;
+  color: var(--secondary);
+}
+.custom-btn-outline-secondary:hover {
+  background-color: var(--secondary);
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
 .custom-btn {
   outline: none;
   border: none;
@@ -64,4 +106,40 @@ html *::-webkit-scrollbar-thumb {
 html *::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0);
+}
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button {
+  color: var(--primary) !important;
+  background: white !important;
+  font-weight: bold;
+}
+
+.page-item.active .page-link {
+  background-color: var(--primary) !important;
+  border-color: var(--primary);
+}
+.page-link {
+  color: var(--primary);
+}
+.page-link:hover {
+  color: var(--primary);
+}
+.page-item.active .page-link:hover {
+  color: white !important;
+}
+.form-select {
+  box-shadow: none !important;
+}
+.form-select {
+  color: var(--primary);
+}
+.form-select {
+  border-color: var(--primary) !important;
+}
+.form-select:focus {
+  border-color: var(--primary) !important;
 }

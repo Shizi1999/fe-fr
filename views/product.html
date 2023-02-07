@@ -4,7 +4,9 @@
     <div class="d-flex pb-3">
       <a class="text-decoration-none text-secondary fs-6 fw-semibold" href="#/!">Trang chủ</a>
       <div class="product-page-line mx-2"></div>
-      <a class="text-decoration-none fs-6 fw-semibold" href="">Sản phẩm</a>
+      <a class="text-decoration-none fs-6 fw-semibold custom-text-primary custom-hover-text-primary" href=""
+        >Sản phẩm</a
+      >
     </div>
     <h2 class="fs-1">Explore All Products</h2>
   </div>
@@ -36,12 +38,19 @@
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div ng-if="!$first" ng-repeat="category in categories" class="accordion-body product-filter-item">
+            <div
+              ng-if="!$first"
+              ng-repeat="category in categories"
+              class="accordion-body product-filter-item custom-hover-text-secondary"
+            >
               <div
                 ng-click="addFiltersCate(category)"
-                class="text-decoration-none position-relative {{checkActiveCate(category) && 'text-primary'}}"
+                class="text-decoration-none position-relative {{checkActiveCate(category) && 'custom-text-secondary'}}"
               >
-                <i ng-if="checkActiveCate(category)" class="bi bi-check text-primary product-selected-icon"></i>
+                <i
+                  ng-if="checkActiveCate(category)"
+                  class="bi bi-check custom-text-secondary product-selected-icon"
+                ></i>
                 {{category.name}}
               </div>
             </div>
@@ -70,12 +79,14 @@
             data-bs-parent="#accordionExample"
           >
             <div
-              class="accordion-body product-filter-item"
+              class="accordion-body product-filter-item custom-hover-text-secondary"
               ng-repeat="price in rangePrices"
               ng-click="addFiltersPrice(price)"
             >
-              <div class="text-decoration-none position-relative {{checkActivePrice(price) && 'text-primary'}}">
-                <i ng-if="checkActivePrice(price)" class="bi bi-check text-primary product-selected-icon"></i
+              <div
+                class="text-decoration-none position-relative {{checkActivePrice(price) && 'custom-text-secondary'}} "
+              >
+                <i ng-if="checkActivePrice(price)" class="bi bi-check custom-text-secondary product-selected-icon"></i
                 >{{price.min | currency:'$':0}} - {{ price.max | currency:'$':0}}
               </div>
             </div>
@@ -98,17 +109,11 @@
             ></select>
           </div>
           <div class="col-lg-9 col-md-12 ps-2 d-flex align-items-center flex-wrap">
-            <div
-              class="border py-2 px-2 me-2 mt-2 rounded-1 border-primary text-primary fw-semibold product-page-filter-item"
-              ng-repeat="cate in filtersCate"
-            >
+            <div class="custom-btn-outline-primary mt-2 me-2" ng-repeat="cate in filtersCate">
               {{cate.name}}
               <span ng-click="removeFilterCate(cate.id)"><i class="bi bi-x"></i></span>
             </div>
-            <div
-              class="border py-2 px-2 me-2 mt-2 rounded-1 border-primary text-primary fw-semibold product-page-filter-item"
-              ng-repeat="price in filtersPrice"
-            >
+            <div class="custom-btn-outline-primary mt-2 me-2" ng-repeat="price in filtersPrice">
               {{price.min | currency:'$':0}} - {{price.max | currency:'$':0}}
               <span ng-click="removeFilterPrice(price)"><i class="bi bi-x"></i></span>
             </div>

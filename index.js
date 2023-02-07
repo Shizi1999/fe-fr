@@ -63,6 +63,9 @@ app.run([
       window.scrollTo(0, 0);
       let path = $location.path();
       $rootScope.activeRoute = path;
+      if (path.startsWith('/product')) {
+        $rootScope.activeRoute = '/product';
+      }
       if (path === '/me') {
         console.log($rootScope.account.email);
         if (!$rootScope.account.email) {
