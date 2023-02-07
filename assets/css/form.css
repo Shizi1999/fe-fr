@@ -15,3 +15,25 @@
 .form-logo {
   max-width: 50%;
 }
+.form-line {
+  width: 100%;
+  border-top: 1px solid rgb(223, 223, 223);
+}
+.options-signin {
+  left: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  display: block;
+  padding: 0 4px;
+}
+.form-social-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.bg-fb {
+  background-color: #0037c1;
+}
+.form-social-btn {
+  cursor: pointer;
+}
