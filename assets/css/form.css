@@ -21,7 +21,7 @@
 }
 .options-signin {
   left: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   background-color: white;
   display: block;
   padding: 0 4px;
