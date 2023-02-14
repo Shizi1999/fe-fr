@@ -14,6 +14,9 @@
   -webkit-appearance: none;
   margin: 0;
 }
+.cart-form {
+  width: 50%;
+}
 @media (max-width: 991px) {
   .cart-form {
     width: 100%;

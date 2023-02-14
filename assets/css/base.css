@@ -147,9 +147,7 @@ body::-webkit-scrollbar-thumb {
 .form-select:focus {
   border-color: var(--primary) !important;
 }
-.row {
-  margin: 0;
-}
+
 .circle {
   border-radius: 50%;
 }
