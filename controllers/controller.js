@@ -6,6 +6,7 @@ import blogController from './blogController.js';
 import signinController from './signinController.js';
 import signupController from './signupController.js';
 import meController from './meController.js';
+import blogdetailController from './blogdetailController.js';
 
 const controller = {
   homeController,
@@ -16,5 +17,6 @@ const controller = {
   signinController,
   signupController,
   meController,
+  blogdetailController,
 };
 export default controller;

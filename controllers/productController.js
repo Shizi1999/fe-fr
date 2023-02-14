@@ -89,19 +89,18 @@ function productController(app) {
       };
       $scope.changePage = (page) => {
         $scope.currentPage = page - 1;
+        window.scroll(0, 0);
       };
       $scope.nextPage = () => {
-        if ($scope.currentPage === $scope.totalPage - 1) {
-          $scope.currentPage = 0;
-        } else {
+        if ($scope.currentPage < $scope.totalPage - 1) {
           $scope.currentPage++;
+          window.scroll(0, 0);
         }
       };
       $scope.prevPage = () => {
-        if ($scope.currentPage === 0) {
-          $scope.currentPage = $scope.totalPage - 1;
-        } else {
+        if ($scope.currentPage > 0) {
           $scope.currentPage--;
+          window.scroll(0, 0);
         }
       };
 
@@ -146,11 +145,6 @@ function productController(app) {
       };
       $scope.addProduct = (product) => {
         productService.addProduct(product);
-        $rootScope.totalProduct = productService.getTotalProduct();
-        $('#addToCart').show();
-        setTimeout(() => {
-          $('#addToCart').hide();
-        }, 1000);
       };
     },
   ]);

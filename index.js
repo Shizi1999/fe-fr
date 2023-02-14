@@ -1,12 +1,60 @@
 import db from './db/db.js';
 import controller from './controllers/controller.js';
-
+import service from './services/service.js';
 const app = angular.module('app', ['ngRoute']);
 
 // set up controller
 for (const key in controller) {
   controller[key](app);
 }
+// setup service
+for (const key in service) {
+  service[key](app);
+}
+app.run([
+  '$rootScope',
+  '$location',
+  function ($rootScope, $location) {
+    for (const key in db) {
+      $rootScope[key] = db[key];
+    }
+    $rootScope.activeRoute = '';
+    $rootScope.avatar = 'assets/images/noavatar.jpg';
+    $rootScope.account = {
+      email: '',
+    };
+
+    $rootScope.timerId = null;
+
+    $rootScope.cartProducts = [];
+
+    $rootScope.totalProductsInCart = 0;
+
+    $rootScope.deleteId = null;
+    $rootScope.closeAddToastMessage = () => {
+      clearTimeout($rootScope.timerId);
+      $rootScope.timerId = null;
+      $('#addToCart').hide();
+    };
+
+    $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+      window.scrollTo(0, 0);
+      let path = $location.path();
+      $rootScope.activeRoute = path;
+      if (path.startsWith('/product')) {
+        $rootScope.activeRoute = '/product';
+      }
+      if (path === '/me') {
+        if (!$rootScope.account.email) {
+          $location.path('/signin');
+        }
+      }
+      if ($('#searchModal')) {
+        $('#searchModal').modal('hide');
+      }
+    });
+  },
+]);
 
 app.config(function ($routeProvider) {
   $routeProvider
@@ -30,6 +78,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/blog.html',
       controller: 'blogController',
     })
+    .when('/blogdetail/:id', {
+      templateUrl: 'views/blogdetail.html',
+      controller: 'blogdetailController',
+    })
     .when('/cart', {
       templateUrl: 'views/cart.html',
       controller: 'cartController',
@@ -41,43 +93,11 @@ app.config(function ($routeProvider) {
     .when('/signup', {
       templateUrl: 'views/signup.html',
       controller: 'signupController',
+    })
+    .otherwise({
+      templateUrl: 'views/notfound.html',
     });
 });
-
-app.run([
-  '$rootScope',
-  '$location',
-  function ($rootScope, $location) {
-    $rootScope.products = db.products;
-    $rootScope.categories = db.categories;
-    $rootScope.blogs = db.blogs;
-    $rootScope.footerLink = db.footerLink;
-    $rootScope.activeRoute = '';
-    $rootScope.accounts = db.accounts;
-    $rootScope.totalProduct = 0;
-    $rootScope.avatar = 'assets/images/noavatar.jpg';
-    $rootScope.account = {
-      email: '',
-    };
-    $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
-      window.scrollTo(0, 0);
-      let path = $location.path();
-      $rootScope.activeRoute = path;
-      if (path.startsWith('/product')) {
-        $rootScope.activeRoute = '/product';
-      }
-      if (path === '/me') {
-        console.log($rootScope.account.email);
-        if (!$rootScope.account.email) {
-          $location.path('/signin');
-        }
-      }
-      if ($('#searchModal')) {
-        $('#searchModal').modal('hide');
-      }
-    });
-  },
-]);
 
 app.directive('customOnChange', function () {
   return {
@@ -89,52 +109,6 @@ app.directive('customOnChange', function () {
         element.off();
       });
     },
-  };
-});
-
-app.factory('productService', function () {
-  let productList = [];
-
-  const addProduct = function (product) {
-    const pro = productList.find((item) => item.id === product.id);
-    if (pro) {
-      pro.number++;
-    } else {
-      product.number = 1;
-      productList.push(product);
-    }
-  };
-
-  const setProducts = (products) => {
-    productList = products;
-  };
-
-  const getProducts = function () {
-    return productList;
-  };
-
-  const addToCartWithQuantity = (product, quantity) => {
-    const pro = productList.find((item) => item.id === product.id);
-    if (pro) {
-      pro.number += quantity;
-    } else {
-      product.number = quantity;
-      productList.push(product);
-    }
-  };
-
-  const getTotalProduct = () => {
-    return productList.reduce((prev, curr) => {
-      return prev + curr.number;
-    }, 0);
-  };
-
-  return {
-    addProduct,
-    addToCartWithQuantity,
-    getProducts,
-    getTotalProduct,
-    setProducts,
   };
 });
 

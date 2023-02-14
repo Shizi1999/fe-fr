@@ -94,18 +94,22 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
-html *::-webkit-scrollbar {
-  border-radius: 0;
-  width: 8px;
+body::-webkit-scrollbar {
+  width: 16px;
 }
-
-html *::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(1, 8, 46, 0.06);
+body::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: hsl(0, 0%, 67%);
 }
-html *::-webkit-scrollbar-track {
-  border-radius: 0;
-  background-color: rgba(0, 0, 0, 0);
+body::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: hsl(0, 0%, 67%);
 }
 .accordion-button:focus {
   box-shadow: none;
@@ -142,4 +146,10 @@ html *::-webkit-scrollbar-track {
 }
 .form-select:focus {
   border-color: var(--primary) !important;
+}
+.row {
+  margin: 0;
+}
+.circle {
+  border-radius: 50%;
 }

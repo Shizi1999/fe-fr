@@ -13,6 +13,7 @@
   margin: 0 20px;
   width: 2px;
 }
+
 @media (min-width: 992px) {
   .blog-page-wrapper {
     padding: var(--padding);

@@ -4,23 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ASM</title>
+    <title>NFTs</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="assets/icons/bootstrap-icons.css" />
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="libs/bootstrap.min.css" />
     <link rel="stylesheet" href="libs/slick/slick.css" />
-    <link rel="stylesheet" href="index.css" />
-    <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="libs/bootstrap.bundle.min.js"></script>
     <script src="libs/jquery-3.6.3.min.js"></script>
     <script src="libs/slick/slick.min.js"></script>
     <script src="libs/angular.min.js"></script>
     <script src="libs/angular-route.js"></script>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body ng-app="app">
     <div class="w-100" ng-view></div>
-
     <!-- Toast -->
     <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
-      <div id="addToCart" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div id="addToCart" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <i class="bi bi-check-circle me-2 text-success fs-4"></i>
           <strong class="me-auto text-success">Product added successfull!</strong>

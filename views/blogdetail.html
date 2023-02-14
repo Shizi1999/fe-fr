@@ -1,0 +1,135 @@
+<div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
+<div class="blog-page-wrapper my-2">
+  <div ng-style="{'background-image':'url({{blog.thumbnail}})'}" class="blog-detail-thumnail-wrapper"></div>
+  <div class="row mt-2">
+    <div class="col-lg-8 col-md-12 col-sm-12 pb-lg-5">
+      <div class="fs-3 fw-semibold">{{blog.title}}</div>
+      <div class="d-flex mt-2 mb-5">
+        <img src="{{blog.authorImg}}" class="circle me-4 author-avatar" alt="" />
+        <div class="d-flex flex-column justify-content-between">
+          <div class="fw-semibold">{{blog.author}}</div>
+          <div class="d-flex text-secondary align-items-center">
+            <div class="">{{blog.timeStamp}}</div>
+            <div class="blog-item-line bg-secondary"></div>
+            <div class="">{{blog.views}}k</div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="blog-detail-des mb-4">
+        <p>
+          Habitasse per feugiat aliquam luctus accumsan curae, suspendisse aliquam taciti eros neque, aenean sit iaculis
+          risus commodo ut sociosqu rhoncus potenti tristique placerat sit tempus, duis erat feugiat cras sociosqu porta
+          ut praesent, fermentum donec convallis tellus vulputate duis nibh rhoncus phasellus dui massa nisl.
+        </p>
+        <p>
+          Whether you’re kicking off a new campaign or looking to revamp your strategy, the lessons you’ll learn will be
+          universal to all small business email marketing.
+        </p>
+        <p>
+          MailChimp is an email marketing service provider founded in 2001. It has 9 million users that collectively
+          send over 15 billion emails through the service each month.
+        </p>
+        <p>
+          Email is a crucial channel in any marketing mix, and never has this been truer than for today’s entrepreneur.
+          Curious what to say? How to say it? How often to hit “send”? Each bite-sized lesson delivers core concepts,
+          guiding questions, and tactical how-to resources.
+        </p>
+        <p>
+          Whether you’re kicking off a new campaign or looking to revamp your strategy, the lessons you’ll learn will be
+          universal to all small business email marketing.
+        </p>
+        <div class="quote-wrapper p-4 mb-4">
+          <p>
+            “Email is a crucial channel in any marketing mix, and never has this been truer than for today’s
+            entrepreneur. Curious what to say? How to say it? How often to hit “send”? Each bite-sized lesson delivers
+            core concepts, guiding questions, and tactical how-to resources.”
+          </p>
+          <div class="d-flex mt-5">
+            <img src="{{blog.authorImg}}" class="circle me-4 author-avatar" alt="" />
+            <div class="d-flex flex-column justify-content-between">
+              <div class="fw-semibold">{{blog.author}}</div>
+              <div class="d-flex text-secondary align-items-center">
+                <div class="">{{blog.timeStamp}}</div>
+                <div class="blog-item-line bg-secondary"></div>
+                <div class="">{{blog.views}}k</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>
+          Email is a crucial channel in any marketing mix, and never has this been truer than for today’s entrepreneur.
+          Curious what to say? How to say it? How often to hit “send”? Each bite-sized lesson delivers core concepts,
+          guiding questions, and tactical how-to resources.
+        </p>
+
+        <div class="row g-2">
+          <div class="col-sm-12 col-md-6">
+            <img src="/assets/images/blogs/blog-1.png" class="img-fluid rounded-3 p-0 m-0" alt="" />
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <img src="/assets/images/blogs/blog-2.png" class="img-fluid rounded-3 p-0 m-0" alt="" />
+          </div>
+        </div>
+        <p class="mt-4">
+          The SuperRep 2 evolves an important facet of modern fitness — training as sport — and the idea that it's
+          deserving of footwear designed to support the performance needs specific to these movements. That’s why the
+          shoe keeps the tech from the original SuperRep, like the forefoot Zoom Air units for pop on jumps, a
+          reinforced rand to brace against lateral bounds and a flexible “burpee break” for everyone’s favorite
+          total-body punisher.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="custom-text-primary fs-4 fw-semibold">Bài viết mới nhất</div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12" ng-repeat="blog in blogs | limitTo: 3:0">
+          <a href="#!blogdetail/{{blog.id}}" class="text-decoration-none text-dark">
+            <div class="row py-2">
+              <div class="col-4">
+                <img src="{{blog.thumbnail}}" alt="" class="img-thumbnail" />
+              </div>
+              <div class="col-8">
+                <div class="fs-6 fw-semibold blog-item-title">{{blog.title}}</div>
+                <div class="d-flex text-secondary align-items-center">
+                  <div class="">{{blog.timeStamp}}</div>
+                  <div class="blog-item-line bg-secondary"></div>
+                  <div class="">{{blog.views}}k</div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="custom-text-primary fs-4 fw-semibold mt-2">Sản phẩm gợi ý</div>
+      <div class="row mx-0 g-1">
+        <div ng-repeat="product in products | orderBy: 'selled' | limitTo: 4: 0" class="col-12 mx-0 my-2">
+          <div class="most-seller-item card">
+            <div class="row px-2 py-2">
+              <div class="col-4">
+                <a href="#!/productdetail/{{product.id}}"
+                  ><img src="{{product.thumbnail}}" alt="" class="img-thumbnail category-item-img"
+                /></a>
+              </div>
+              <div class="col-8 d-flex flex-column justify-content-center">
+                <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
+                <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
+                <button
+                  ng-click="addProduct(product)"
+                  class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="custom-text-primary fs-4 fw-semibold mt-2 pb-2">Tags</div>
+      <div class="d-flex flex-wrap">
+        <button class="custom-btn-outline-primary me-2 mb-2" ng-repeat="tag in tags">{{tag}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include src="'components/footer.html'"></div>

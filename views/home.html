@@ -192,10 +192,10 @@
     <div class="row g-2">
       <div ng-repeat="blog in blogs" class="col-lg-4 col-md-6 col-sm-12">
         <div class="card d-flex flex-column h-100">
-          <img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt="" />
+          <a href="#!blogdetail/{{blog.id}}"><img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt="" /></a>
           <div class="d-flex flex-grow-1 px-2 pb-2 flex-column justify-content-between">
             <p class="home-blog-title fw-semibold">{{blog.title}}</p>
-            <a href="" class="header-banner-btn fw-bold">
+            <a href="#!blogdetail/{{blog.id}}" class="header-banner-btn fw-bold">
               <span class="me-2">Khám phá</span>
               <i class="bi bi-arrow-right fw-bolder"></i
             ></a>
@@ -217,19 +217,25 @@
     infinity: true,
     responsive: [
       {
-        breakpoint: 1080,
+        breakpoint: 992,
         settings: {
-          arrows: false,
           slidesToShow: 4,
           slidesToScroll: 4,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 576,
         settings: {
-          arrows: false,
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
@@ -243,17 +249,23 @@
     infinity: true,
     responsive: [
       {
-        breakpoint: 1080,
+        breakpoint: 992,
         settings: {
-          arrows: false,
           slidesToShow: 4,
           slidesToScroll: 4,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 576,
         settings: {
-          arrows: false,
           slidesToShow: 1,
           slidesToScroll: 1,
         },

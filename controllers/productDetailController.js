@@ -17,21 +17,11 @@ function productDetailController(app) {
       };
 
       $scope.addToCartWithQuantity = (product) => {
-        productService.addToCartWithQuantity(product, $scope.quantity);
-        $rootScope.totalProduct = productService.getTotalProduct();
-        $('#addToCart').show();
-        setTimeout(() => {
-          $('#addToCart').hide();
-        }, 1000);
+        productService.addProduct(product, $scope.quantity);
       };
 
       $scope.addProduct = (product) => {
         productService.addProduct(product);
-        $rootScope.totalProduct = productService.getTotalProduct();
-        $('#addToCart').show();
-        setTimeout(() => {
-          $('#addToCart').hide();
-        }, 1000);
       };
     },
   ]);

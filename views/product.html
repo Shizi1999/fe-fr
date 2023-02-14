@@ -8,7 +8,7 @@
         >Sản phẩm</a
       >
     </div>
-    <h2 class="fs-1">Explore All Products</h2>
+    <h2 class="fs-1">Sản Phẩm Của Chúng Tôi</h2>
   </div>
   <div class="col-md-6 col-sm-12 d-flex justify-content-md-end justify-content-sm-start">
     <img src="assets/images/product-logo.png" alt="" />
@@ -149,7 +149,7 @@
       <div class="w-100 d-flex justify-content-center mt-2">
         <nav aria-label="Page navigation example">
           <ul ng-if="products.length >0" class="pagination">
-            <li class="page-item">
+            <li class="page-item {{currentPage === 0 ? 'disabled' :''}}">
               <div class="page-link" ng-show="totalPage > 1" ng-click="prevPage()">
                 <i class="bi bi-chevron-double-left"></i>
               </div>
@@ -162,7 +162,11 @@
               <div class="page-link">{{i}}</div>
             </li>
             <li class="page-item">
-              <div class="page-link" ng-show="totalPage > 1" ng-click="nextPage()">
+              <div
+                class="page-link {{currentPage === totalPage-1 ? 'disabled' :''}}"
+                ng-show="totalPage > 1"
+                ng-click="nextPage()"
+              >
                 <i class="bi bi-chevron-double-right"></i>
               </div>
             </li>

@@ -1,6 +1,6 @@
 <div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
 <div class="cart-wrapper mt-4">
-  <div class="w-100" ng-if="products.length > 0">
+  <div class="w-100" ng-if="cartProducts.length > 0">
     <h4>Giỏ hàng</h4>
     <div class="row custom-shadow py-2 rounded-1 mb-2 d-none d-md-flex mx-0">
       <div class="col-sm-12 col-md-4">
@@ -16,18 +16,25 @@
         </div>
       </div>
     </div>
-
+    <div class="d-block d-md-none ps-1">
+      <input ng-checked="isCheckedAll" ng-click="handleCheckAll()" type="checkbox" class="form-check-input me-2" />
+      <span>Tất cả</span>
+    </div>
     <!-- products -->
-    <div class="row custom-shadow py-2 rounded-1 mb-2 mx-0" ng-repeat="product in products">
+    <div class="row custom-shadow py-2 rounded-1 mb-2 mx-0" ng-repeat="product in cartProducts">
       <div class="col-sm-12 col-md-4 d-flex align-items-center">
         <input
           type="checkbox"
           ng-click="handleCheckProduct(product)"
           class="form-check-input me-2"
-          ng-checked="product.checked"
+          ng-checked="product.selected"
         />
-        <img src="{{product.thumbnail}}" class="img-thumbnail card-img mx-2" alt="" />
-        <span class="fs-4 fw-semibold custom-text-primary">{{product.name}}</span>
+        <a href="#!productdetail/{{product.id}}">
+          <img src="{{product.thumbnail}}" class="img-thumbnail card-img mx-2" alt="" />
+        </a>
+        <a class="text-decoration-none" href="#!productdetail/{{product.id}}">
+          <span class="fs-4 fw-semibold custom-text-primary">{{product.name}}</span>
+        </a>
       </div>
       <div class="col-sm-12 col-md-8">
         <div class="row h-100 align-items-center">
@@ -98,7 +105,7 @@
       <button type="submit" class="btn btn-primary">Thanh toán</button>
     </form>
   </div>
-  <div ng-if="products.length === 0" class="d-flex align-items-center justify-content-center flex-column">
+  <div ng-if="cartProducts.length === 0" class="d-flex align-items-center justify-content-center flex-column">
     <img src="assets/images/empty-product.png" class="img-thumbnail border-0" alt="" />
     <div class="fw-semibold custom-text-primary">Oops! Giỏ hàng trống!</div>
     <a href="#!product/All" class="text-decoration-none fw-semibold">Tiếp tục mua sắm</a>

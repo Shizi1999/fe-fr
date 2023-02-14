@@ -6,7 +6,7 @@
       <div class="product-page-line mx-2"></div>
       <a class="text-decoration-none fs-6 fw-semibold custom-text-primary" href="">Bài Viết</a>
     </div>
-    <h2 class="fs-1">Explore All Blogs</h2>
+    <h2 class="fs-1">Bài Viết Nổi Bật</h2>
   </div>
   <div class="col-md-6 col-sm-12 d-flex justify-content-md-end justify-content-sm-start">
     <img src="assets/images/product-logo.png" alt="" />
@@ -16,12 +16,17 @@
   <div class="row mx-0">
     <div class="col-lg-8 col-md-12 col-sm-12 pb-lg-5">
       <div class="row g-3">
-        <div ng-repeat="blog in blogs" class="col-lg-6 col-md-6 col-sm-12">
+        <div
+          ng-repeat="blog in blogs | limitTo: limit: currentPage*limit"
+          class="col-lg-6 col-md-6 col-sm-12 blog-item"
+        >
           <div class="card d-flex flex-column h-100">
-            <img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt="" />
+            <a href="#!blogdetail/{{blog.id}}"
+              ><img src="{{blog.thumbnail}}" class="img-thumbnail border-0" alt=""
+            /></a>
             <div class="d-flex flex-grow-1 px-2 pb-2 flex-column justify-content-between">
-              <p class="home-blog-title fw-semibold">{{blog.title}}</p>
-              <a href="" class="header-banner-btn fw-bold">
+              <p class="home-blog-title fw-semibold p-0">{{blog.title}}</p>
+              <a href="#!blogdetail/{{blog.id}}" class="header-banner-btn fw-bold">
                 <span class="me-2">Khám phá</span>
                 <i class="bi bi-arrow-right fw-bolder"></i
               ></a>
@@ -29,12 +34,35 @@
           </div>
         </div>
       </div>
+      <div class="w-100 d-flex justify-content-center mt-5">
+        <nav aria-label="Page navigation example">
+          <ul ng-if="products.length >0" class="pagination">
+            <li class="page-item {{currentPage === 0 ? 'disabled' :''}}">
+              <div class="page-link" ng-show="totalPage > 1" ng-click="prevPage()">
+                <i class="bi bi-chevron-double-left"></i>
+              </div>
+            </li>
+            <li
+              class="page-item {{i === currentPage+1 ? 'active' : ''}}"
+              ng-repeat="i in getPage()"
+              ng-click="changePage(i)"
+            >
+              <div class="page-link">{{i}}</div>
+            </li>
+            <li class="page-item {{currentPage === totalPage-1 ? 'disabled' :''}}">
+              <div class="page-link" ng-show="totalPage > 1" ng-click="nextPage()">
+                <i class="bi bi-chevron-double-right"></i>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
     <div class="col-lg-4 col-md-12 col-sm-12">
       <div class="custom-text-primary fs-4 fw-semibold">Bài viết mới nhất</div>
       <div class="row">
-        <a href="#/!" class="text-decoration-none text-dark">
-          <div class="col-lg-12 col-md-12 col-sm-12" ng-repeat="blog in blogs | limitTo: 3:0">
+        <div class="col-lg-12 col-md-12 col-sm-12" ng-repeat="blog in blogs | limitTo: 3:0">
+          <a href="#!blogdetail/{{blog.id}}" class="text-decoration-none text-dark">
             <div class="row py-2">
               <div class="col-4">
                 <img src="{{blog.thumbnail}}" alt="" class="img-thumbnail" />
@@ -48,8 +76,8 @@
                 </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
       <div class="custom-text-primary fs-4 fw-semibold mt-2">Sản phẩm gợi ý</div>
       <div class="row mx-0 g-1">
@@ -64,7 +92,10 @@
               <div class="col-8 d-flex flex-column justify-content-center">
                 <div class="fw-semibold fs-6 text-secondary">{{product.name}}</div>
                 <div class="fw-semibold fs-4 custom-text-secondary">{{product.price | currency}}</div>
-                <button class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn">
+                <button
+                  ng-click="addProduct(product)"
+                  class="custom-bg-primary text-white custom-btn hover py-1 mt-2 w-50 most-seller-add-btn"
+                >
                   Add to cart
                 </button>
               </div>

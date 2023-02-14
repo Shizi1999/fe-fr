@@ -4,23 +4,23 @@ const footerLink = [
     content: [
       {
         title: 'Về chúng tôi',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'Chúng tôi là ai',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'Bài viết mới',
-        href: '#/!',
+        href: '#!blog',
       },
       {
         title: 'Hàng mới về',
-        href: '#/!',
+        href: '#!product/All',
       },
       {
         title: 'Liên hệ với chúng tôi',
-        href: '#/!',
+        href: '',
       },
     ],
   },
@@ -29,23 +29,23 @@ const footerLink = [
     content: [
       {
         title: 'Tài khoản của tôi',
-        href: '#/!',
+        href: '#!me',
       },
       {
         title: 'Đăng ký / Đăng nhập',
-        href: '#/!',
+        href: '#!signin',
       },
       {
         title: 'Giỏ hàng',
-        href: '#/!',
+        href: '#!cart',
       },
       {
         title: 'Danh sách yêu thích',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'Cửa hàng',
-        href: '#/!',
+        href: '#!product',
       },
     ],
   },
@@ -54,19 +54,19 @@ const footerLink = [
     content: [
       {
         title: 'Chính sách',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'Điều khoản sử dụng',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'FAQ',
-        href: '#/!',
+        href: '',
       },
       {
         title: 'Liên hệ',
-        href: '#/!',
+        href: '',
       },
     ],
   },

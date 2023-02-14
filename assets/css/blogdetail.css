@@ -1,0 +1,29 @@
+.blog-detail-thumnail-wrapper {
+  height: 70vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+.author-avatar {
+  width: 50px;
+  height: 50px;
+}
+.blog-detail-des > p {
+  color: #777777;
+  line-height: 1.7rem;
+}
+.quote-wrapper {
+  border-left: 4px solid var(--primary);
+  background-color: #f9f3f0;
+  border-radius: 4px;
+}
+.quote-wrapperp > p {
+  color: #777777;
+  line-height: 1.7rem;
+}
+@media (max-width: 576px) {
+  .blog-detail-thumnail-wrapper {
+    height: 40vh;
+  }
+}

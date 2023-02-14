@@ -37,3 +37,8 @@
 .form-social-btn {
   cursor: pointer;
 }
+@media (max-width: 576px) {
+  .form-wrapper {
+    width: 90%;
+  }
+}

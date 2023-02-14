@@ -2,22 +2,22 @@ const categories = [
   {
     id: 0,
     name: 'All',
-    thumbnail: './assets/images/category/free.png',
+    thumbnail: 'assets/images/category/free.png',
   },
   {
     id: 1,
     name: 'Art',
-    thumbnail: './assets/images/category/art.png',
+    thumbnail: 'assets/images/category/art.png',
   },
   {
     id: 2,
     name: 'Music',
-    thumbnail: './assets/images/category/music.png',
+    thumbnail: 'assets/images/category/music.png',
   },
   {
     id: 3,
     name: 'Photography',
-    thumbnail: './assets/images/category/photography.png',
+    thumbnail: 'assets/images/category/photography.png',
   },
   {
     id: 4,

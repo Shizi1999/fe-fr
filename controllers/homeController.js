@@ -1,5 +1,3 @@
-import guides from '../db/guides.js';
-
 function homeController(app) {
   app.controller('homeController', function ($scope, $rootScope, productService) {
     $scope.products = $rootScope.products;
@@ -20,7 +18,7 @@ function homeController(app) {
       }
     };
 
-    $scope.guides = guides;
+    $scope.guides = $rootScope.guides;
     $scope.closeSearchModal = () => {
       $('#searchModal').modal('hide');
     };
@@ -39,15 +37,6 @@ function homeController(app) {
 
     $scope.addProduct = (product) => {
       productService.addProduct(product);
-      $rootScope.totalProduct = productService.getTotalProduct();
-      $('#addToCart').show();
-      setTimeout(() => {
-        $('#addToCart').hide();
-      }, 1000);
-    };
-
-    $scope.closeToastMessage = () => {
-      $('#addToCart').hide();
     };
   });
 }
