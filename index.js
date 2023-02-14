@@ -94,6 +94,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/signup.html',
       controller: 'signupController',
     })
+    .when('/contact', {
+      templateUrl: 'views/contact.html',
+      controller: 'contactController',
+    })
     .otherwise({
       templateUrl: 'views/notfound.html',
     });

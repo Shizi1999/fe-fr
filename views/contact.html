@@ -1,0 +1,53 @@
+<div class="header-wrapper shadow-sm" ng-include src="'components/header.html'"></div>
+<div class="contact-wrapper">
+  <div class="row contact-item">
+    <div class="col-md-6 col-sm-12 d-none d-md-flex flex-column align-items-center justify-content-center">
+      <img class="contact-envelope" src="assets/images/contact-email.webp" alt="" />
+    </div>
+    <div class="col-md-6 col-sm-12 py-4 d-flex flex-column align-items-center">
+      <h2 class="custom-text-secondary text-center">Liên hệ với chúng tôi</h2>
+      <form novalidate ng-submit="sendMessage()" class="contactForm" name="contactForm">
+        <div class="form-group">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input required id="email" name="email" type="email" class="contact-input contact-input-focus" />
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label fw-semibold">Message</label>
+          <textarea
+            class="w-100 px-1 rounded-1 contact-text-area contact-input-focus"
+            name=""
+            id="message"
+            rows="8"
+            required
+          ></textarea>
+        </div>
+        <button class="contact-btn mt-2"><span class="me-1">Gửi</span> <i class="bi bi-send-fill"></i></button>
+        <h4 class="fs-6 mt-2" style="color: #777">Hoặc liên hệ với chúng tôi qua:</h4>
+        <div class="d-flex justify-content-start">
+          <img src="assets/images/facebook.webp" class="contact-icon me-2 cursor-pointer" alt="" />
+          <img src="assets/images/instagram.png" class="contact-icon me-2 cursor-pointer" alt="" />
+          <img src="assets/images/telegram.webp" class="contact-icon me-2 cursor-pointer" alt="" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 custom-text-secondary" id="contactModalLabel">Thông báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span>Chúng tôi đã tiếp nhận và sẽ xử lý yêu cầu của bạn sớm nhất có thể.</span>
+        <span class="custom-text-secondary fw-semibold">Cảm ơn bạn đã liên hệ với chúng tôi!</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="contact-btn" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-include src="'components/footer.html'"></div>

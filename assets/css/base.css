@@ -153,3 +153,6 @@ body::-webkit-scrollbar-thumb {
 .circle {
   border-radius: 50%;
 }
+.cursor-pointer {
+  cursor: pointer;
+}

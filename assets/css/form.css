@@ -1,6 +1,6 @@
 .form-layout {
   height: 100vh;
-  background-image: url('../../assets/images/background-form.jpg');
+  background-image: url('../../assets/images/bg-form.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -10,6 +10,8 @@
   width: 60%;
   min-width: 300px;
   min-height: 60%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .form-logo {
@@ -37,8 +39,13 @@
 .form-social-btn {
   cursor: pointer;
 }
-@media (max-width: 576px) {
+@media (max-width: 992px) {
   .form-wrapper {
     width: 90%;
+  }
+}
+@media (min-width: 992px) {
+  .form-wrapper {
+    transform: translateX(18%);
   }
 }
