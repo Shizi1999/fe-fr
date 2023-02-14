@@ -7,11 +7,11 @@ function productController(app) {
     function ($scope, $routeParams, $rootScope, productService) {
       $scope.categoryName = $routeParams.categoryName;
       $scope.sorts = [
-        { name: 'Order by Name', value: 'name' },
-        { name: 'Order by Price', value: 'price' },
+        { name: 'Sắp xếp theo tên', value: 'name', reverse: false },
+        { name: 'Sắp xếp theo giá tăng dần', value: 'price', reverse: false },
+        { name: 'Sắp xếp theo giá giảm dần', value: 'price', reverse: true },
       ];
       $scope.sort = $scope.sorts[0];
-
       $scope.rangePrices = [
         { min: 5, max: 20 },
         { min: 20, max: 40 },
@@ -32,23 +32,6 @@ function productController(app) {
       }
 
       $scope.handleSortChange = () => {
-        if ($scope.sort.value === 'name') {
-          $scope.products.sort((a, b) => {
-            const nameA = a.name.toUpperCase();
-            const nameB = b.name.toUpperCase();
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-
-            return 0;
-          });
-        }
-        if ($scope.sort.value === 'price') {
-          $scope.products.sort((a, b) => a.price - b.price);
-        }
         $scope.currentPage = 0;
       };
 
@@ -63,7 +46,7 @@ function productController(app) {
         }
 
         if (max) {
-          result = $rootScope.products.filter((pro) => pro.price >= min && pro.price < max);
+          result = $rootScope.products.filter((pro) => pro.price >= min && pro.price <= max);
         } else {
           result = $rootScope.products;
         }
@@ -73,6 +56,13 @@ function productController(app) {
         } else {
           return result.filter((pro) => $scope.filtersCate.map((item) => item.id).includes(pro.categoryId));
         }
+      };
+
+      $scope.clearFilter = () => {
+        $scope.filtersPrice = [];
+        $scope.filtersCate = [];
+        $scope.products = $scope.filter();
+        $scope.totalPage = Math.ceil($scope.products.length / $scope.limit);
       };
 
       $scope.products = $scope.filter();

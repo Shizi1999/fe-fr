@@ -59,4 +59,7 @@
   .footer-mobile {
     display: flex;
   }
+  #footer {
+    padding-bottom: 70px;
+  }
 }

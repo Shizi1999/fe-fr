@@ -1,0 +1,31 @@
+[
+  {
+    "title": "ABOUT",
+    "content": [
+      { "title": "Về chúng tôi", "href": "" },
+      { "title": "Chúng tôi là ai", "href": "" },
+      { "title": "Bài viết mới", "href": "#!blog" },
+      { "title": "Hàng mới về", "href": "#!product/All" },
+      { "title": "Liên hệ với chúng tôi", "href": "#!contact" }
+    ]
+  },
+  {
+    "title": "ACCOUNT",
+    "content": [
+      { "title": "Tài khoản của tôi", "href": "#!me" },
+      { "title": "Đăng ký / Đăng nhập", "href": "#!signin" },
+      { "title": "Giỏ hàng", "href": "#!cart" },
+      { "title": "Danh sách yêu thích", "href": "" },
+      { "title": "Cửa hàng", "href": "#!product" }
+    ]
+  },
+  {
+    "title": "SUPPORT",
+    "content": [
+      { "title": "Chính sách", "href": "" },
+      { "title": "Điều khoản sử dụng", "href": "" },
+      { "title": "FAQ", "href": "" },
+      { "title": "Liên hệ", "href": "#!contact" }
+    ]
+  }
+]

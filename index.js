@@ -1,4 +1,3 @@
-import db from './db/db.js';
 import controller from './controllers/controller.js';
 import service from './services/service.js';
 const app = angular.module('app', ['ngRoute']);
@@ -14,10 +13,22 @@ for (const key in service) {
 app.run([
   '$rootScope',
   '$location',
-  function ($rootScope, $location) {
-    for (const key in db) {
-      $rootScope[key] = db[key];
-    }
+  '$http',
+  function ($rootScope, $location, $http) {
+    const databasePaths = ['account', 'blogs', 'categories', 'footerLink', 'guides', 'products'];
+    const getData = (path) => {
+      $http.get(`db/${path}.json`).then(
+        (response) => {
+          $rootScope[path] = response.data;
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
+    };
+    databasePaths.forEach((path) => {
+      getData(path);
+    });
     $rootScope.activeRoute = '';
     $rootScope.avatar = 'assets/images/noavatar.jpg';
     $rootScope.account = {
