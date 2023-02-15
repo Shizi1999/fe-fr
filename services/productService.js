@@ -1,17 +1,5 @@
 function productService(app) {
   app.factory('productService', function ($rootScope) {
-    const showAddToastMessage = () => {
-      if ($rootScope.timerId) {
-        $('#addToCart').hide();
-        clearTimeout($rootScope.timerId);
-        $rootScope.timerId = null;
-      }
-      $('#addToCart').show();
-      $rootScope.timerId = setTimeout(() => {
-        $('#addToCart').hide();
-      }, 1000);
-    };
-
     const addProduct = function (product, quantity = 1) {
       const pro = $rootScope.cartProducts.find((item) => item.id === product.id);
       if (pro) {
@@ -22,7 +10,7 @@ function productService(app) {
         $rootScope.cartProducts.push(product);
       }
       getTotalProduct();
-      showAddToastMessage();
+      $rootScope.showToastMessage('addToCart');
     };
 
     const handleIncrease = (product) => {

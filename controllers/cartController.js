@@ -88,10 +88,7 @@ function cartController(app) {
           $rootScope.totalProductsInCart = 0;
           $scope.modal.show();
         } else {
-          $('#cartErrorMessage').show();
-          setTimeout(() => {
-            $('#cartErrorMessage').hide();
-          }, 2000);
+          $rootScope.showToastMessage('cartErrorMessage');
         }
       }
     };

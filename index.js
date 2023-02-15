@@ -15,7 +15,7 @@ app.run([
   '$location',
   '$http',
   function ($rootScope, $location, $http) {
-    const databasePaths = ['account', 'blogs', 'categories', 'footerLink', 'guides', 'products'];
+    const databasePaths = ['accounts', 'blogs', 'categories', 'footerLink', 'guides', 'products'];
     const getData = (path) => {
       $http.get(`db/${path}.json`).then(
         (response) => {
@@ -35,18 +35,13 @@ app.run([
       email: '',
     };
 
-    $rootScope.timerId = null;
+    $rootScope.showToastMessage = (selectorID, delay = 1000) => {
+      bootstrap.Toast.getOrCreateInstance(document.getElementById(selectorID), { delay }).show();
+    };
 
     $rootScope.cartProducts = [];
 
     $rootScope.totalProductsInCart = 0;
-
-    $rootScope.deleteId = null;
-    $rootScope.closeAddToastMessage = () => {
-      clearTimeout($rootScope.timerId);
-      $rootScope.timerId = null;
-      $('#addToCart').hide();
-    };
 
     $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
       window.scrollTo(0, 0);
