@@ -5,8 +5,9 @@ function cartController(app) {
       address: '',
       phone: '',
     };
+    $scope.billProducts = [];
     $scope.phoneError = '';
-
+    $scope.modal = new bootstrap.Modal(document.getElementById('cartModal'), {});
     const getCheckedAll = () => {
       for (let i = 0; i < $rootScope.cartProducts.length; i++) {
         if (!$rootScope.cartProducts[i].selected) {
@@ -80,14 +81,12 @@ function cartController(app) {
 
     $scope.order = (form) => {
       if (form.$valid) {
-        let selectedProduct = $rootScope.cartProducts.filter((item) => item.selected).length > 0;
-        if (selectedProduct) {
+        let selectedProduct = $rootScope.cartProducts.filter((item) => item.selected);
+        if (selectedProduct.length > 0) {
           $rootScope.cartProducts = $rootScope.cartProducts.filter((item) => !item.selected);
-          $('#cartSuccessMessage').show();
-          setTimeout(() => {
-            $('#cartSuccessMessage').hide();
-          }, 2000);
+          $scope.billProducts = selectedProduct;
           $rootScope.totalProductsInCart = 0;
+          $scope.modal.show();
         } else {
           $('#cartErrorMessage').show();
           setTimeout(() => {
@@ -103,6 +102,11 @@ function cartController(app) {
       } else {
         $scope.phoneError = '';
       }
+    };
+
+    $scope.exportBill = () => {
+      generatePdf($scope.billProducts, $scope.formState.name, $scope.formState.address, $scope.formState.phone);
+      $scope.modal.hide();
     };
   });
 }

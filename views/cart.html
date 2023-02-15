@@ -73,7 +73,7 @@
         <input
           type="text"
           ng-model="formState.name"
-          class="form-control"
+          class="contact-input contact-input-focus d-block"
           id="name"
           aria-describedby="emailHelp"
           required
@@ -82,7 +82,13 @@
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Địa chỉ</label>
-        <input ng-model="formState.address" type="text" class="form-control" id="address" required />
+        <input
+          ng-model="formState.address"
+          type="text"
+          class="contact-input contact-input-focus d-block"
+          id="address"
+          required
+        />
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">SDT:</label>
@@ -91,14 +97,14 @@
           ng-model="formState.phone"
           type="tel"
           name="phone"
-          class="form-control"
+          class="contact-input contact-input-focus d-block"
           id="phone"
           required
           ng-pattern="/(84|0[3|5|7|8|9])+([0-9]{8})\b/"
         />
         <div class="form-text text-danger">{{phoneError}}</div>
       </div>
-      <button type="submit" class="btn btn-primary">Thanh toán</button>
+      <button type="submit" class="cart-btn">Thanh toán</button>
     </form>
   </div>
   <div ng-if="cartProducts.length === 0" class="d-flex align-items-center justify-content-center flex-column">
@@ -131,18 +137,30 @@
 
   <!-- toast -->
   <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
-    <div id="cartSuccessMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <i class="bi bi-check-circle me-2 text-success fs-4"></i>
-        <strong class="me-auto text-success">Đặt hàng thành công!</strong>
-      </div>
-    </div>
-  </div>
-  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 99999">
     <div id="cartErrorMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <i class="bi bi-x-circle me-2 text-danger fs-4"></i>
         <strong class="me-auto text-danger">Vui lòng chọn tối thiểu 1 sản phẩm!</strong>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cartModal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 custom-text-secondary" id="cartModalLabel">Thông báo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span>Đặt hàng thành công</span>
+        <span ng-click="exportBill()" class="custom-text-secondary cursor-pointer fw-semibold text-decoration-underline"
+          >Xuất hoá đơn ngay!</span
+        >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="contact-btn" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
